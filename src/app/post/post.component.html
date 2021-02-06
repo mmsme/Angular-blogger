@@ -1,0 +1,23 @@
+<div class="card mt-4 p-0">
+  <img class="card-img-top" height="220" src="../../assets/khara-woods-ZlZZLjuibeQ-unsplash.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">
+      <ng-content select=".title"></ng-content>
+    </h4>
+    <p class="card-text p-2">
+      <ng-content select=".content"></ng-content>
+    </p>
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="create-date">
+        <span class="far fa-clock mr-1"></span>
+        <ng-content select=".date"></ng-content>
+      </div>
+      <div class="align-items-end">
+        <span class="fas fa-heart"></span>
+        <span class="p-1">
+          <ng-content select=".likes"></ng-content>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

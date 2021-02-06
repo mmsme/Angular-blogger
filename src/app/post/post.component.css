@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik:wght@500&display=swap');
+
+.card {
+  border-radius: 1em;
+  transition: all 500ms;
+}
+
+.card-img-top {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.192);
+  transform: scale(1.005);
+}
+
+.fa-clock{
+  color: #28886c;
+}
+
+.create-date{
+  font-size: medium;
+  font-family: 'Nunito',
+  sans-serif;
+  font-family: 'Rubik',
+  sans-serif;
+  opacity: 0.8;
+  font-size: 2ex;
+}
+
+.fa-heart{
+  color: rgb(32, 136, 79);
+}
+

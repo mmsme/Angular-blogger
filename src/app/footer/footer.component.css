@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container-fluid{
+  background-color: #262626;
+}
+.tag{
+  background-color: #3C3C3C;
+  color: #f7f7f7;
+  text-decoration: none;
+  transition: all 200ms;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tag:hover{
+  background-color: #28C884;
+}
+
+.tags-title{
+  color: #f7f7f7;
+  text-transform: capitalize;
+  font-size: 2.5ex;
+  font-weight: 400;
+}
+
+.recent{
+  color: #19ab84;
+  font-size: 2.2ex;
+}
+
+.copyright{
+  color: #f7f7f7;
+  opacity: 0.8;
+  font-size: 2.4ex;
+  font-weight: 300;
+  font-family: 'Roboto',
+  sans-serif;
+}
+
+.fab {
+  margin-right: 1ex;
+  color: #f7f7f7;
+  font-size: 4ex;
+  transition: all 500ms;
+  cursor: pointer;
+}
+
+.fab:hover {
+  color: #28C884;
+  transform: scale(1.05);
+}
+
+.footer-text{
+  color: #f7f7f7;
+  background-color: #1D1D1D;
+}

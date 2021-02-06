@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+
+.jumbotron{
+  background-image: url('../../assets/header.jpg');
+  background-size: cover;
+  color: #f7f7f7;
+  border-radius: 0;
+  height: 20em;
+}
+
+.lead{
+  color: #f7f7f7a1;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.display-3,
+.navbar-brand {
+  font-family: 'Pacifico',cursive;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+.display-3:hover{
+  color: #28C884;
+  transform: scale(1.005);
+}
+
+.navbar {
+  background-color: #1D1D1D;
+}
+
+
+.fab {
+  margin-right: 1ex;
+  color: #f7f7f7;
+  font-size: 4ex;
+  transition: all 500ms;
+  cursor: pointer;
+}
+
+.fab:hover{
+  color: #28C884;
+  transform: scale(1.05);
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+  font-weight: 500;
+  color: #28C884;
+}
+
+.navbar-nav .nav-link:hover{
+  color: #28C884;
+}
+
+
+.footer-text{
+  color: #f7f7f7;
+  background-color: #1D1D1D;
+  font-size: 5ex;
+}
