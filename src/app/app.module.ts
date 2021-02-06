@@ -7,9 +7,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PostComponent, FooterComponent],
+  declarations: [AppComponent, NavbarComponent, PostComponent, FooterComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

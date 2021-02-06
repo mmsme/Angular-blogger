@@ -1,0 +1,22 @@
+.btn:not(:disabled):not(.disabled) {
+  background-color: #28c882;
+  font-size: 2ex;
+}
+
+.navbar-brand {
+  font-family: 'Pacifico', cursive;
+  cursor: pointer;
+}
+
+.link{
+  color: #28c882;
+}
+
+.link:hover,
+.link:focus{
+  color: #28c882;
+}
+
+input{
+  font-size: 2ex;
+}
