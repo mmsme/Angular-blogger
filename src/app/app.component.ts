@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,12 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'blogger';
-  arr: any = [];
-  constructor(private http: HttpClient) {
-    http
-      .get<any>('https://mmustafablog.herokuapp.com/article')
-      .subscribe((res) => {
-        this.arr = res;
-      });
-  }
+
+  constructor() {}
 }

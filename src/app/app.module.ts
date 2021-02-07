@@ -8,11 +8,27 @@ import { PostComponent } from './post/post.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PostComponent, FooterComponent, LoginComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [HttpClientModule],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    PostComponent,
+    FooterComponent,
+    LoginComponent,
+    HomeComponent,
+    NotFoundComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
+  providers: [HttpClientModule, FormBuilder],
   bootstrap: [AppComponent],
   exports: [PostComponent],
 })

@@ -3,6 +3,10 @@
   font-size: 2ex;
 }
 
+.btn-disabled {
+ background-color: aquamarine;
+}
+
 .navbar-brand {
   font-family: 'Pacifico', cursive;
   cursor: pointer;
@@ -17,6 +21,3 @@
   color: #28c882;
 }
 
-input{
-  font-size: 2ex;
-}

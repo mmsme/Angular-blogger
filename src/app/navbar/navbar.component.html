@@ -42,9 +42,36 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="search-btn nav-link mr-2" role="button"><span class="fas fa-search"></span> Search</a>
+        <!-- change the content based on user status -->
+
+        <!-- Write Post Icon -->
+        <li *ngIf="auth.isLoggedIn()"><a href="#" class="nav-link mr-2" role="button"><span
+              class="fas fa-pen mr-1"></span></a>
         </li>
-        <li><a class="nav-link"><span class="fas fa-sign-out-alt"></span> Logout</a></li>
+
+        <!-- Search icon -->
+        <li *ngIf="auth.isLoggedIn()"><a href="#" class="nav-link search-btn mr-2" role="button"><span
+              class="fas fa-search"></span></a>
+        </li>
+
+        <!-- register icon -->
+        <li *ngIf="!auth.isLoggedIn()"><a href="#" class="nav-link mr-2" role="button"><span
+              class="fas fa-user-plus"></span>
+            Register</a>
+        </li>
+
+        <!-- login icon -->
+        <li *ngIf="!auth.isLoggedIn()" routerLink="/login"><a class="nav-link mr-2" role="button"><span
+              class="fas fa-sign-in-alt"></span>
+            Login</a>
+        </li>
+
+        <!-- logout icon -->
+        <li *ngIf="auth.isLoggedIn()" (click)="auth.logout()"><a class="nav-link"><span
+              class="fas fa-sign-out-alt"></span>
+            Logout</a>
+        </li>
+
       </ul>
     </div>
   </div>
