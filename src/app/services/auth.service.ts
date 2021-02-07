@@ -37,11 +37,7 @@ export class AuthService {
       return false;
     }
 
-    const expirationDate = jwt.getTokenExpirationDate(token);
     const isExpired = jwt.isTokenExpired(token);
-
-    console.log('Expiration', expirationDate);
-    console.log('isExpired', isExpired);
 
     return !isExpired;
   }

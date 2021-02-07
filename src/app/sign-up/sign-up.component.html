@@ -18,9 +18,6 @@
 
           <!-- input from  -->
           <div class="content mt-3">
-            <div *ngIf="form.errors" class="text text-danger m-2">Username or Password an invalid</div>
-
-
             <!-- firstname -->
             <div class="form-inline d-flex justify-content-between">
               <div class="input-group form-group-no-border input-lg">
@@ -105,7 +102,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text pr-2 text-white"> <i class="far fa-map"></i></span>
                   </div>
-                  <input formControlName="fname" #fname type="text" class="form-control" placeholder="Address...">
+                  <input formControlName="address" #address type="text" class="form-control" placeholder="Address...">
                 </div>
               </div>
 
@@ -115,10 +112,10 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text pr-2 text-white"><i class="far fa-calendar-alt"></i></span>
                   </div>
-                  <input formControlName="fname" #fname type="date" class="form-control">
+                  <input max="2000-12-30" min="1960-01-02" #dob type="date" class="form-control pr-2 text-white">
                 </div>
 
-                <div *ngIf="Address.touched && Address.invalid" class="text text-danger">Invalid Address</div>
+                <div *ngIf="" class="text text-danger">Invalid Address</div>
               </div>
             </div>
           </div>
