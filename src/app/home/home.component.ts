@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   arr: any = [];
+  number = new Array(9);
+  isComplete = false;
 
   constructor(private http: HttpClient) {}
 
@@ -15,6 +17,7 @@ export class HomeComponent implements OnInit {
     this.http
       .get<any>('https://mmustafablog.herokuapp.com/article')
       .subscribe((res) => {
+        this.isComplete = true;
         this.arr = res;
       });
   }

@@ -12,6 +12,9 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HomeComponent,
     NotFoundComponent,
     SignUpComponent,
+    ProfileComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [HttpClientModule, FormBuilder],
   bootstrap: [AppComponent],

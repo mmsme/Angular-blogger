@@ -3,6 +3,7 @@
 .card {
   border-radius: 1em;
   transition: all 500ms;
+  cursor: pointer;
 }
 
 .card-img-top {

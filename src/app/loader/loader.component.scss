@@ -1,0 +1,97 @@
+ /* Card styles */
+ .card {
+   background-color: #fff;
+   height: 380px;
+   width: auto;
+   overflow: hidden;
+   outline-style: none;
+   margin: 12px;
+   border-top-left-radius: 1em;
+   border-top-right-radius: 1em;
+   box-shadow: 9px 17px 45px -29px rgba(0, 0, 0, 0.44);
+ }
+
+
+.card {
+  border-radius: 1em;
+  transition: all 500ms;
+}
+
+ /* Card image loading */
+ .card__image img {
+   width: 100%;
+   height: 100%;
+ }
+
+ .card__image.loading {
+   height: 300px;
+   width: 100%;
+   border-radius: 1em;
+ }
+
+ /* Card title */
+ .card__title {
+   padding: 8px;
+   font-size: 22px;
+   font-weight: 700;
+ }
+
+ .card__title.loading {
+   height: 2rem;
+   width: 50%;
+   margin: 1rem;
+   border-radius: 15px;
+ }
+
+ /* Card description */
+ .card__description {
+   padding: 8px;
+   font-size: 16px;
+ }
+
+ .card__description.loading {
+   height: 1.5em;
+   margin: 1ex 1rem 1ex 1rem;
+   border-radius: 15px;
+ }
+
+ /* The loading Class */
+ .loading {
+   position: relative;
+   background-color: #e2e2e2;
+ }
+
+ /* The moving element */
+ .loading::after {
+   display: block;
+   content: "";
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   transform: translateX(-100%);
+   background: -webkit-gradient(linear, left top,
+       right top, from(transparent),
+       color-stop(rgba(255, 255, 255, 0.2)),
+       to(transparent));
+
+   background: linear-gradient(90deg, transparent,
+       rgba(255, 255, 255, 0.2), transparent);
+
+   /* Adding animation */
+   animation: loading 0.8s infinite;
+ }
+
+ /* Loading Animation */
+ @keyframes loading {
+   100% {
+     transform: translateX(100%);
+   }
+ }
+
+ .breaker{
+   height: 1em;
+ }
+
+ .icon{
+    border-radius: 5em;
+ }
