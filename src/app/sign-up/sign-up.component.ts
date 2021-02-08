@@ -1,3 +1,5 @@
+import { CustomeValidators } from './../common/custom.validators';
+import { AuthService } from './../services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,31 +17,33 @@ export class SignUpComponent implements OnInit {
       Validators.maxLength(30),
       Validators.required,
       Validators.pattern('[A-Z][a-zA-Z]*'),
+      CustomeValidators.checkSpaceInput,
     ]),
     lname: new FormControl('', [
-      Validators.maxLength(3),
-      Validators.minLength(30),
-      Validators.pattern('[A-Z][a-zA-Z]*'),
+      Validators.minLength(3),
+      Validators.maxLength(30),
+      Validators.pattern('[a-zA-Z]*'),
     ]),
     username: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(100),
+      CustomeValidators.checkSpaceInput,
     ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-      Validators.minLength(10),
-    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.minLength(8),
       Validators.maxLength(100),
       Validators.required,
+      CustomeValidators.checkSpaceInput,
     ]),
-    address: new FormControl('', [Validators.pattern('^d+s[A-z]+s[A-z]+$')]),
+    address: new FormControl('', [
+      Validators.minLength(3),
+      Validators.maxLength(100),
+    ]),
   });
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -47,7 +51,7 @@ export class SignUpComponent implements OnInit {
     return this.form.get('fname');
   }
   get Lname(): any {
-    return this.form.get('Lname');
+    return this.form.get('lname');
   }
   get Username(): any {
     return this.form.get('username');
@@ -60,5 +64,27 @@ export class SignUpComponent implements OnInit {
   }
   get Address(): any {
     return this.form.get('address');
+  }
+
+  createNewUser(
+    fname: HTMLInputElement,
+    lname: HTMLInputElement,
+    username: HTMLInputElement,
+    email: HTMLInputElement,
+    password: HTMLInputElement,
+    address: HTMLInputElement,
+    dob: HTMLInputElement
+  ): void {
+    const user = {
+      fname: fname.value,
+      lname: lname.value,
+      username: username.value,
+      email: email.value,
+      password: password.value,
+      address: address.value,
+      dob: dob.value,
+    };
+
+    this.auth.signUp(user);
   }
 }

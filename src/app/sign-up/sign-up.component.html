@@ -1,14 +1,14 @@
 <div class="page-header">
-  <div class="page-header-image" style="background-image:url('../../assets/img/header.jpg')"></div>
+  <div class="page-header-image" style="background-image:url('../../assets/img/header.jpg');"></div>
   <div class="container">
     <div class="col-md-4 content-center">
 
       <!-- login Card Form -->
-      <div class="card col-md-8 card-login p-1 card-plain">
-        <form class="form" [formGroup]="form">
+      <div class="card col-md-8 card-login card-plain">
+        <form class="form" [formGroup]="form" autocomplete="off">
 
           <!-- logo -->
-          <div class="header header-primary text-center">
+          <div class="header header-primary text-center d-none d-md-block">
             <div class="logo-container">
               <img src="../../assets/img/_free-file.png" width="80" height="100" alt="">
               <br>
@@ -19,125 +19,113 @@
           <!-- input from  -->
           <div class="content mt-3">
             <!-- firstname -->
-            <div class="form-inline d-flex justify-content-between">
-              <div class="input-group form-group-no-border input-lg">
-                <div class="input-group-prepend">
-                  <span class="input-group-text pr-2 text-white"> <i class="now-ui-icons users_circle-08"></i></span>
-                </div>
-                <input formControlName="fname" #fname type="text" class="form-control" placeholder="Firstname...">
-              </div>
+            <div class="row">
 
-              <div class="input-group form-group-no-border input-lg">
-                <div class="input-group-prepend">
-                  <span class="input-group-text pr-2 text-white"> <i class="now-ui-icons users_circle-08"></i></span>
-                </div>
-                <input formControlName="lname" #lname type="text" class="form-control" placeholder="Lastname...">
-              </div>
-
-            </div>
-
-            <!-- username -->
-            <div class="input-group form-group-no-border input-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text pr-2 text-white"> <i class="now-ui-icons users_circle-08"></i></span>
-              </div>
-              <input [class.is-invalid]="Username.touched && Username.invalid"
-                [class.is-valid]="Username.touched && !Username.invalid" formControlName="username" #username
-                type="text" class="form-control" placeholder="Username...">
-            </div>
-            <!-- validation errro messages -->
-            <div *ngIf="Username.touched && Username.invalid">
-              <p *ngIf="Username.errors.required" class="text text-danger">Username is required</p>
-              <p *ngIf="Username.errors.minlength" class="text text-danger">Username minlength is
-                {{Username.errors.minlength.requiredLength}}</p>
-              <p *ngIf="Username.errors.maxlength" class="text text-danger">Username maxlength is
-                {{Username.errors.maxlength.requiredLength}}</p>
-            </div>
-
-            <div class="form-inline d-flex justify-content-between">
-              <!-- Email -->
-              <div>
+              <div class="col-12 col-md-6">
                 <div class="input-group form-group-no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text pr-2 text-white"> <i class="now-ui-icons users_circle-08"></i></span>
+                  </div>
+                  <input formControlName="fname" #fname [class.is-invalid]="Fname.touched && Fname.invalid"
+                    [class.is-valid]="Fname.touched && !Fname.invalid" type="text" class="form-control"
+                    placeholder="Firstname..." autocomplete="off">
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="input-group form-group-no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text pr-2  text-white"> <i class="now-ui-icons users_circle-08"></i></span>
+                  </div>
+                  <input formControlName="lname" #lname [class.is-invalid]="Lname.touched && Lname.invalid"
+                    [class.is-valid]="Lname.touched && !Lname.invalid" type="text" class="form-control"
+                    placeholder="Lastname..." autocomplete="off">
+                </div>
+              </div>
+
+            </div>
+
+            <div>
+              <!-- username -->
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text pr-2 text-white"> <i class="now-ui-icons users_circle-08"></i></span>
+                </div>
+                <input [class.is-invalid]="Username.touched && Username.invalid"
+                  [class.is-valid]="Username.touched && !Username.invalid" formControlName="username" #username
+                  type="text" class="form-control" placeholder="Username..." autocomplete="off">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <!-- Email -->
+              <div class="col-12 col-md-6">
+                <div class="input-group form-group-no-border input-lg ">
                   <div class="input-group-prepend">
                     <span class="input-group-text pr-2 text-white"> <i class="far fa-envelope"></i></span>
                   </div>
                   <input [class.is-invalid]="Email.touched && Email.invalid"
                     [class.is-valid]="Email.touched && !Email.invalid" formControlName="email" #email type="text"
-                    class="form-control" placeholder="Email...">
-                </div>
-                <!-- Email validation errro messages -->
-                <div *ngIf="Email.touched && Email.invalid">
-                  <p *ngIf="Email.errors.required" class="text text-danger">Email is required</p>
-                  <p *ngIf="Email.errors.minlength" class="text text-danger">Username minlength is
-                    {{Email.errors.minlength.requiredLength}}</p>
-                  <p *ngIf="Email.errors.maxlength" class="text text-danger">Email is invalid</p>
+                    class="form-control" placeholder="Email..." autocomplete="off">
                 </div>
               </div>
 
-              <div>
+              <div class="col-12 col-md-6">
                 <!-- password -->
                 <div class="input-group form-group-no-border input-lg">
                   <div class="input-group-prepend">
-                    <span class="input-group-text pr-2 text-white"><i class="fas fa-key text_caps-small"></i></span>
+                    <span class="input-group-text pr-2  text-white"><i class="fas fa-key text_caps-small"></i></span>
                   </div>
                   <input [class.is-invalid]="Password.touched && Password.invalid"
                     [class.is-valid]="Password.touched && !Password.invalid" formControlName="password" #password
-                    type="password" placeholder="Password..." class="form-control" />
-                </div>
-                <!-- validation errro messages -->
-                <div *ngIf="Password.touched && Password.invalid">
-                  <p *ngIf="Password.errors.required" class="text text-danger">Password is required</p>
-                  <p *ngIf="Password.errors.minlength" class="text text-danger">Password minlength is
-                    {{Password.errors.minlength.requiredLength}}</p>
-                  <p *ngIf="Password.errors.maxlength" class="text text-danger">Password maxlength is
-                    {{Password.errors.maxlength.requiredLength}}</p>
+                    type="password" placeholder="Password..." class="form-control" autocomplete="off" />
                 </div>
               </div>
+
             </div>
 
-            <div class="form-inline d-flex justify-content-between">
-              <!-- address -->
-              <div>
+
+            <!-- address -->
+            <div class="row">
+              <div class="col-12 col-md-6">
                 <div class="input-group form-group-no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text pr-2 text-white"> <i class="far fa-map"></i></span>
                   </div>
-                  <input formControlName="address" #address type="text" class="form-control" placeholder="Address...">
+                  <input formControlName="address" #address [class.is-invalid]="Address.touched && Address.invalid"
+                    [class.is-valid]="Address.touched && !Address.invalid" type="text" class="form-control"
+                    placeholder="Address..." autocomplete="off">
                 </div>
               </div>
 
               <!-- Date -->
-              <div>
+              <div class="col-12 col-md-6">
                 <div class="input-group form-group-no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text pr-2 text-white"><i class="far fa-calendar-alt"></i></span>
                   </div>
                   <input max="2000-12-30" min="1960-01-02" #dob type="date" class="form-control pr-2 text-white">
                 </div>
-
-                <div *ngIf="" class="text text-danger">Invalid Address</div>
               </div>
             </div>
+
+
           </div>
+
           <div class="footer text-center">
-            <button class="btn btn-round btn-block shadow" [disabled]="Username.invalid||Password.invalid"
-              type="submit">
+            <button class="btn btn-round btn-block shadow"
+              [disabled]="Username.invalid||Password.invalid||Address.invalid||Email.invalid||Fname.invalid||Lname.invalid"
+              type="submit" (click)="createNewUser(fname,lname,username,email,password,address,dob)">
               Login
             </button>
           </div>
           <div class="pull-left">
             <h6>
-              <a href="#" class="link">Create Account</a>
+              <a routerLink="/login" class="link">Already have an account</a>
             </h6>
           </div>
-          <div class="pull-right">
-            <h6>
-              <a href="#" class="link">Need Help?</a>
-            </h6>
-          </div>
-
         </form>
-
 
       </div>
     </div>

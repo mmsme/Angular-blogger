@@ -1,6 +1,6 @@
+import { CustomeValidators } from './../common/custom.validators';
 import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(50),
+      CustomeValidators.checkSpaceInput,
     ]),
     password: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
       Validators.minLength(8),
+      CustomeValidators.checkSpaceInput,
     ]),
   });
 
@@ -51,11 +53,10 @@ export class LoginComponent implements OnInit {
     const user = { username: name.value, password: password.value };
 
     this.auth.login(user).subscribe(
-      (result): void => {
-        console.log(result);
+      () => {
         this.router.navigate(['/home']);
       },
-      (err) => {
+      (err: any) => {
         this.form.setErrors(err);
       }
     );
