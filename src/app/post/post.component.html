@@ -1,6 +1,24 @@
 <div class="card mt-4 p-0">
-  <img class="card-img-top" height="280" src="../../assets/img/ryunosuke-kikuno--7SAWWnthAY-unsplash.jpg"
-    alt="Card image cap">
+  <div class="row m-2  ">
+    <div>
+      <img *ngIf="!showDiv" src="{{profileImg}}" width="60" height="60" class="rounded-circle" onerror="">
+      <div *ngIf="showDiv" style="background-color: {{ chooseColor() }} "
+        class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
+        <span class="h5 p-3">{{genrateName()}}</span>
+      </div>
+    </div>
+    <div class="ml-2 p-1">
+      <div class="name">
+        <ng-content select=".name"></ng-content>
+      </div>
+      <div class="username">
+        <ng-content select=".username"></ng-content>
+      </div>
+    </div>
+  </div>
+
+  <img class="card-img-top" height="280" src="{{imgSrc}}" alt="Card image cap"
+    onerror="this.src='assets/img/no-image-available.png'">
   <div class="card-body">
     <h4 class="card-title">
       <ng-content select=".title"></ng-content>
@@ -8,6 +26,7 @@
     <p class="card-text p-2">
       <ng-content select=".content"></ng-content>
     </p>
+    <hr>
     <div class="d-flex align-items-center justify-content-between">
       <div class="create-date">
         <span class="far fa-clock mr-1"></span>

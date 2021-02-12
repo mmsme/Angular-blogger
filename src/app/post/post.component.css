@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik:wght@500&display=swap');
+
 
 .card {
   border-radius: 1em;
@@ -6,14 +6,9 @@
   cursor: pointer;
 }
 
-.card-img-top {
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
-}
-
 .card:hover {
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.192);
-  transform: scale(1.005);
+  transform: scale(1.002);
 }
 
 .fa-clock{
@@ -34,3 +29,20 @@
   color: rgb(32, 136, 79);
 }
 
+.name{
+  font-size: medium;
+  font-weight: 700;
+}
+
+.username{
+  font-size: medium;
+  font-style: normal;
+  font-weight: 500;
+  color: rgb(97, 97, 97);
+}
+
+
+.imgDiv{
+  width: 60px;
+  height: 60px;
+}

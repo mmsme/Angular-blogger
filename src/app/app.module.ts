@@ -15,6 +15,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LoaderComponent } from './loader/loader.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoaderComponent } from './loader/loader.component';
     SignUpComponent,
     ProfileComponent,
     LoaderComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
