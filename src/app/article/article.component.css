@@ -1,0 +1,70 @@
+.card{
+  border-radius: 1em;
+}
+
+.article-title{
+  padding: 2em;
+  padding-left: 3em ;
+}
+
+.auther-profile{
+  color: #f7f7f7;
+  background-color: #2B3542;
+}
+
+
+.imgDiv{
+  width: 60px;
+  height: 60px;
+  margin: 0ex 3ex 0ex 3ex;
+  border: 2px solid wheat;
+}
+
+.card-text{
+  line-height: 30px;
+  font-size: larger;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.74);
+}
+
+.auhter{
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+}
+
+.username{
+  margin-top: -10px;
+}
+
+.view-post{
+  font-weight: 500;
+  font-size: large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #13C4A5;
+}
+
+.recent{
+  color: #19ab84;
+  font-size: 2.2ex;
+}
+
+#info{
+  background-color: #3F4854;
+}
+
+.article-info{
+  font-size: large;
+  color: #f7f7f7;
+  margin: 5px;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+hr{
+  background-color: #f7f7f779;
+}
+
+.fas{
+  color: #119c83;
+}

@@ -1,1 +1,87 @@
-<p>article works!</p>
+<pre>
+
+
+
+</pre>
+
+<div class="container">
+  <div class="card shadow p-0">
+    <div class="article-title">
+      <h1 class="card-title" style="color: rgba(0, 0, 0, 0.644);">Caffee</h1>
+      <span class="badge badge-success m-1 p-1">Coffe</span>
+      <span class="badge badge-warning m-1 p-1">Coffe</span>
+      <span class="badge badge-success m-1 p-1">Coffe</span>
+    </div>
+    <img class="card-img-top img-fluid" height="500" src="" alt="Card image cap"
+      onerror="this.src='assets/img/no-image-available.png'">
+    <div class="card-body p-5">
+      <div class="card-text mt-3">
+        <p>
+          It is not much to say that nine-tenths of that decoction which passes under the name of
+          coffee, is unworthy to be so called, and that many persons live and die without ever tasting a really good cup
+          of that delicious beverage.
+
+          As a nation, the American people want the best of everything, and intend to have that best. Furthermore, they
+          are very properly and intelligently eager to turn it to the greatest advantage. But what avails the best raw
+          material if it be not prepared in such a manner as to develop and secure its subtle, delicate, volatile and
+          enlivening qualities? The very same ingredients may be injurious and depressing, or wholesome and
+          exhilarating,
+          according to the way in which they are treated.
+        </p>
+      </div>
+    </div>
+
+    <div class="row no-gutters">
+      <div class="col-12 col-md-8">
+        <div class="auther-profile media p-3 pb-5">
+          <div class="row m-3">
+            <img *ngIf="showDiv" src="../../assets/img/_free-file.png" width="60" height="60"
+              class="rounded-circle mr-3">
+            <div *ngIf="!showDiv" [style.background-color]="chooseColor()"
+              class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
+              <span class="thumbnail h5 p-3">{{genrateChar("Mohamed")}}</span>
+            </div>
+            <div class="media-body">
+              <h5 class="mt-2 auhter">Published by Mohamed Mustafa</h5>
+              <p class="username mt-0">@Mmsme</p>
+              <div class="view-post">
+                <a class="recent m-1" href="#">&#xbb; View All posts by mohamed mustafa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="info" class="col-12 col-md-4 p-4">
+        <div class="article-info"><i class="fas fa-clock"></i>&nbsp; Feb 12 2020</div>
+        <div class="article-info"><i class="fas fa-heart"></i>&nbsp; 12 Like</div>
+        <div class="article-info"><i class="fas fa-clock"></i>&nbsp; 5 Comment</div>
+      </div>
+    </div>
+
+    <div class="m-4">
+      <app-comment></app-comment>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

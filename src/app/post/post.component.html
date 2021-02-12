@@ -2,7 +2,7 @@
   <div class="row m-2  ">
     <div>
       <img *ngIf="!showDiv" src="{{profileImg}}" width="60" height="60" class="rounded-circle" onerror="">
-      <div *ngIf="showDiv" style="background-color: {{ chooseColor() }} "
+      <div *ngIf="showDiv" [style.background-color]="chooseColor()"
         class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
         <span class="h5 p-3">{{genrateName()}}</span>
       </div>
