@@ -1,3 +1,4 @@
+import { ArticleService } from './../services/article.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
@@ -12,25 +13,14 @@ export class FooterComponent implements OnInit {
   tags: any[] = [];
   recent: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private articleServices: ArticleService) {}
 
-  async ngOnInit(): Promise<void> {
-    await this.http
-      .get<any>('https://mmustafablog.herokuapp.com/article')
-      .pipe(
-        map((data: any) =>
-          data.sort(
-            (a: any, b: any): any =>
-              new Date(a.createdAt).getTime() - new Date().getTime()
-          )
-        )
-      )
-      .subscribe((res) => {
-        this.articles = res;
-        this.getRecentTags(this.articles);
-        this.getRecent(this.articles);
-        console.log(this.tags);
-      });
+  ngOnInit(): void {
+    this.articleServices.getAllArticle().subscribe((data: any) => {
+      this.articles = data;
+      this.getRecent(data);
+      this.getRecentTags(data);
+    });
   }
 
   getRecent(data: any[]): void {
@@ -42,27 +32,9 @@ export class FooterComponent implements OnInit {
   }
 
   getRecentTags(data: any): void {
-    const tags: string | any[] = [];
-
-    // tslint:disable-next-line:prefer-const
-    for (let item of data) {
-      // console.log(Array.isArray(item.tages));
-      // if (Array.isArray(item.tages)) {
-      //   // tslint:disable-next-line:prefer-const
-      //   for (let i of item.tages) {
-      //     console.log(i);
-
-      //     this.addTag(i);
-      //     continue;
-      //   }
-      // }
-
-      // console.log(item);
-      // tslint:disable-next-line:curly
-
+    for (const item of data) {
       this.addTag(item.tages);
     }
-    console.table(tags);
   }
 
   addTag(tag: any): void {
@@ -72,13 +44,7 @@ export class FooterComponent implements OnInit {
       if (x) {
         continue;
       }
-
       this.tags.push(item);
     }
-    // const i = this.tags.indexOf();
-    // console.log(i);
-    // console.log(...tag);
-    // if (i === -1) {
-    // }
   }
 }

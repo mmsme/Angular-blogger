@@ -17,6 +17,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LoaderComponent } from './loader/loader.component';
 import { ArticleComponent } from './article/article.component';
 import { CommentComponent } from './comment/comment.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TimeLineComponent } from './time-line/time-line.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { CommentComponent } from './comment/comment.component';
     LoaderComponent,
     ArticleComponent,
     CommentComponent,
+    TimeLineComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { CommentComponent } from './comment/comment.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
+    NgxPaginationModule,
   ],
   providers: [HttpClientModule, FormBuilder],
   bootstrap: [AppComponent],

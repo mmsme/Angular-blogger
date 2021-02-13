@@ -38,7 +38,7 @@
         </li>
         <li class="nav-item">
           <a *ngIf="auth.isLoggedIn()" class="nav-link"
-            [routerLink]="[{ outlets: { primary: ['home'],home: ['profile'] } }]">Profile</a>
+            [routerLink]="['/home', { outlets: {'route1':['profile/5']}}]">Profile</a>
         </li>
       </ul>
 

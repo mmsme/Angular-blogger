@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class ImgDivService {
   colors = [
-    '#16c79a',
+    '#374045',
     '#008891',
-    '#cf1b1b',
+    '#ff4646',
     '#272343',
     '#222831',
-    '#d2e603',
-    '#ffd700',
-    '#fd7014',
+    '#fdb827',
+    '#351f39',
+    '#54e346',
     '#204051',
     '#007965',
   ];
