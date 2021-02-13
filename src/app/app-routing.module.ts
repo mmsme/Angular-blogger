@@ -1,3 +1,4 @@
+import { CreateArticleComponent } from './create-article/create-article.component';
 import { TimeLineComponent } from './time-line/time-line.component';
 import { ArticleComponent } from './article/article.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '', component: TimeLineComponent, outlet: 'route1' },
       { path: 'article/:id', component: ArticleComponent, outlet: 'route1' },
       { path: 'profile/:id', component: ProfileComponent, outlet: 'route1' },
+      { path: 'create', component: CreateArticleComponent, outlet: 'route1' },
     ],
   },
   { path: 'login', component: LoginComponent },

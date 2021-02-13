@@ -18,6 +18,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.articleServices.getAllArticle().subscribe((data: any) => {
       this.articles = data;
+      console.log(this.articles);
+
       this.getRecent(data);
       this.getRecentTags(data);
     });
@@ -38,6 +40,7 @@ export class FooterComponent implements OnInit {
   }
 
   addTag(tag: any): void {
+    console.log(tag);
     for (const item of tag) {
       // tslint:disable-next-line:prefer-const
       let x = this.tags.includes(item);

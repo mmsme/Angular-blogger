@@ -23,7 +23,7 @@ export class ArticleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.as.getArticleById('601da5bb2566450015900ec2').subscribe((res: any) => {
+    this.as.getArticleById('6028390ebda65800159e9b03').subscribe((res: any) => {
       this.article = res;
       console.log(this.article);
       this.isLiked = this.as.AleradyLikeIt(this.article.likes);
