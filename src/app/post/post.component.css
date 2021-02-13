@@ -32,6 +32,7 @@
 .name{
   font-size: medium;
   font-weight: 700;
+  color: rgba(0, 0, 0, 0.678)
 }
 
 .username{
@@ -45,4 +46,13 @@
 .imgDiv{
   width: 60px;
   height: 60px;
+}
+
+.card-title{
+  color: #1d1d1dc4;
+}
+
+.card-text{
+  font-size: large;
+  color: #1d1d1dc4;
 }
