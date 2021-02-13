@@ -1,3 +1,6 @@
+import { ArticleService } from './../services/article.service';
+import { FormControl } from '@angular/forms';
+import { CommentService } from './../services/comment.service';
 import { AuthService } from './../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ImgDivService } from './../services/img-div.service';
@@ -12,11 +15,14 @@ export class ArticleComponent implements OnInit {
   showDiv = false;
   article: any;
   tags = [];
+  isLiked!: boolean;
 
   constructor(
     public img: ImgDivService,
     private http: HttpClient,
-    public auth: AuthService
+    public auth: AuthService,
+    private commentServices: CommentService,
+    private as: ArticleService
   ) {}
 
   ngOnInit(): void {
@@ -31,9 +37,13 @@ export class ArticleComponent implements OnInit {
         headers
       )
       .subscribe((res: any) => {
-        this.article = res[0];
+        this.article = res;
+        this.isLiked = this.as.AleradyLikeIt(this.article.likes);
         this.getTags(this.article);
       });
+
+    // tslint:disable-next-line:align
+    // this.as.AleradyLikeIt();
   }
 
   divImageShow(img: string): void {
@@ -44,6 +54,14 @@ export class ArticleComponent implements OnInit {
 
   getTags(data: any): void {
     this.tags = data.tages;
-    console.log(this.tags);
+  }
+
+  addComment(data: HTMLTextAreaElement): void {
+    const content = { content: data.value };
+    this.commentServices.addComment(this.article._id, content);
+  }
+
+  like(): void {
+    // this.as.
   }
 }

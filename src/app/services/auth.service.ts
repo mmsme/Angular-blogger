@@ -17,6 +17,7 @@ export class AuthService {
     return this.http.post(this.url + '/login', userInfo).pipe(
       map((response: any) => {
         if (response && response.token) {
+          localStorage.setItem('uid', JSON.stringify(response._id));
           localStorage.setItem('user', JSON.stringify(response.token));
           return true;
         }

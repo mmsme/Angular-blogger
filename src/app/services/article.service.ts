@@ -1,5 +1,6 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -24,8 +25,17 @@ export class ArticleService {
       );
   }
 
-  // get Article By ID
-  getArticleById(id: any): object {
-    return {};
+  AleradyLikeIt(likes: any[]): boolean {
+    const uid = JSON.parse(localStorage.getItem('uid') || '');
+    const exist = likes.includes(uid);
+    console.log(exist);
+    return exist ? true : false;
   }
+
+  // get Article By ID
+  getArticleById(id: any): any {}
+
+  likeArticle(postId: string): void {}
+
+  unlikeArticle(postId: string): void {}
 }
