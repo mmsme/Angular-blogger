@@ -74,3 +74,9 @@ hr{
 .fas{
   color: #119c83;
 }
+
+.comment{
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em ;
+  border-bottom-right-radius: 1em ;
+}

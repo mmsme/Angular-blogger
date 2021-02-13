@@ -4,13 +4,22 @@
 
 
     <div class="article-title">
-      <h1 class="card-title" style="color: rgba(0, 0, 0, 0.644);">{{article?.title}}</h1>
-      <div class="d-flex justify-content-sm-start">
+      <div class="row d-flex justify-content-between">
+        <h1 class="card-title" style="color: rgba(0, 0, 0, 0.644);">{{article?.title}}</h1>
+        <div class="align-items-end m-3">
+          <span class="far fa-heart" [class.fas]="" style="font-size: larger;"></span>
+        </div>
+      </div>
+      <div class="">
         <ng-container *ngFor="let tag of tags">
-          <span class="badge badge-success m-1 p-1">{{tag}}</span>
+          <span class="badge m-1 p-1" [style.background-color]="img.chooseColor()"
+            style="color: #f7f7f7;">{{tag}}</span>
         </ng-container>
       </div>
     </div>
+
+
+
 
 
     <img class="card-img-top img-fluid" src="{{article?.image}}" src="" alt="Card image cap"
@@ -56,6 +65,20 @@
 
 
     <div *ngIf="auth.isLoggedIn()">
+
+      <div class="row no-gutters p-2">
+        <div class="col-12 col-md-10">
+          <div class="form-group mt-4 ml-4">
+            <textarea class="comment form-control" name="" id="" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="col-12 col-md-2 p-4">
+          <button type="button" class="btn btn-success">Add Comment</button>
+        </div>
+      </div>
+
+      <hr>
+
       <div class="m-4" *ngFor="let item of article?.comments">
         <app-comment [name]="img.nameToCaptial(article?.auther?.fname+' '+article?.auther?.lname)">
           <ng-container class="content">
