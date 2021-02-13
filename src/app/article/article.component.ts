@@ -1,3 +1,6 @@
+import { AuthService } from './../services/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ImgDivService } from './../services/img-div.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,25 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
   showDiv = false;
-  colors = [
-    '#16c79a',
-    '#008891',
-    '#cf1b1b',
-    '#272343',
-    '#222831',
-    '#d2e603',
-    '#ffd700',
-    '#fd7014',
-    '#204051',
-    '#007965',
-  ];
+  article: any;
+  tags = [];
 
-  constructor() {}
+  constructor(
+    public img: ImgDivService,
+    private http: HttpClient,
+    public auth: AuthService
+  ) {}
 
-  ngOnInit(): void {}
-
-  genrateChar(name: string): string {
-    return name.charAt(0).toUpperCase();
+  ngOnInit(): void {
+    const header = new HttpHeaders().set(
+      'Authorization',
+      `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1vaGFtZWQxMiIsImVtYWlsIjoiYWxhYUBnbWFpbC5jb20iLCJpZCI6IjYwMjZmOTVjNjQ4NjM1MDAxNTkxNTRiNiIsImlhdCI6MTYxMzE3NzU5NiwiZXhwIjoxNjEzMjYzOTk2fQ.zaxpP2fWvxDISgI3maLS0ZXak8d9sDdVWkYRRZTLAII`
+    ); // may be localStorage/sessionStorage
+    const headers = { headers: header };
+    this.http
+      .get(
+        'https://mmustafablog.herokuapp.com/article/6027186064863500159154bc',
+        headers
+      )
+      .subscribe((res: any) => {
+        this.article = res[0];
+        this.getTags(this.article);
+      });
   }
 
   divImageShow(img: string): void {
@@ -34,7 +42,8 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  chooseColor(): string {
-    return this.colors[Math.floor(Math.random() * 10)];
+  getTags(data: any): void {
+    this.tags = data.tages;
+    console.log(this.tags);
   }
 }

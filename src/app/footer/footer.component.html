@@ -4,22 +4,17 @@
     <div class="col-12 mb-4 mb-md-0 col-md-4">
       <p class="tags-title ">Tags Widget</p>
       <div class="d-flex flex-wrap">
-        <ng-container *ngFor="let item of arr">
+        <ng-container *ngFor="let item of tags">
           <a class="tag m-1 pr-2 pt-1 pb-1 pl-2 rounded-lg" href="#" role="button">{{item}}</a>
         </ng-container>
       </div>
     </div>
 
     <div class="col-12 mb-4 mb-md-0 col-md-4">
-      <p class="tags-title ">Latest News</p>
-      <div class="d-flex flex-wrap">
-        <div class="list-group">
-          <a class="recent m-1" href="#">&#xbb; Mohamed Salah Scored a goal aginst Man City</a>
-          <a class="recent m-1" href="#">&#xbb; Mohamed Mustafa a new prisdent of Canada</a>
-          <a class="recent m-1" href="#">&#xbb; The Reinvention of Normal</a>
-          <a class="recent m-1" href="#">&#xbb; Learn WordPress</a>
-          <a class="recent m-1" href="#">&#xbb; The Science of Foodd</a>
-          <a class="recent m-1" href="#">&#xbb; Elon Mask is reachest man in the world</a>
+      <p class="tags-title ">Latest Articles</p>
+      <div>
+        <div class="list-group" *ngFor="let item of recent">
+          <a class="recent m-1 d-block" href="#">&#xbb; {{item}}</a>
         </div>
       </div>
     </div>

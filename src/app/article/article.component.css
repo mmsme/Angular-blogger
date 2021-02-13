@@ -2,6 +2,12 @@
   border-radius: 1em;
 }
 
+.jumbotron{
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  color: #2b3542c4;
+}
+
 .article-title{
   padding: 2em;
   padding-left: 3em ;
@@ -9,7 +15,7 @@
 
 .auther-profile{
   color: #f7f7f7;
-  background-color: #2B3542;
+  background-color: #1d1d1d;
 }
 
 
@@ -45,12 +51,12 @@
 }
 
 .recent{
-  color: #19ab84;
+  color: #13C4A5;
   font-size: 2.2ex;
 }
 
 #info{
-  background-color: #3F4854;
+  background-color: #000000c5;
 }
 
 .article-info{

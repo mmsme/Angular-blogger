@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((res) => {
         this.isComplete = true;
-        console.log(res);
         this.arr = res;
       });
   }

@@ -1,8 +1,16 @@
 .content{
-  background-color: rgba(221, 221, 221, 0.301);
+  background-color: rgba(221, 221, 221, 0.568);
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   border-top-right-radius: 1em;
+  height: auto;
   color: #333;
+  width: fit-content;
 }
 
+
+.imgDiv{
+  width: 55px;
+  height: 55px;
+  margin-right: 1ex;
+}
