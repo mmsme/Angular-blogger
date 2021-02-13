@@ -7,13 +7,13 @@
       <div class="row d-flex justify-content-between">
         <h1 class="card-title" style="color: rgba(0, 0, 0, 0.644);">{{article?.title}}</h1>
         <div class="align-items-end m-3">
-          <span class="far fa-heart" [class.fas]="isLiked" style="font-size: larger;"></span>
+          <span *ngIf="auth.isLoggedIn()" class="far fa-heart" (click)="like()" [class.fas]="isLiked"
+            style="font-size: larger; cursor: pointer;"></span>
         </div>
       </div>
       <div class="">
         <ng-container *ngFor="let tag of tags">
-          <span class="badge m-1 p-1" [style.background-color]="img.chooseColor()"
-            style="color: #f7f7f7;">{{tag}}</span>
+          <span class="badge m-1 p-1" style="color: #f7f7f7; background-color: #28c886;">{{tag}}</span>
         </ng-container>
       </div>
     </div>

@@ -9,12 +9,12 @@ export class CommentService {
   private url = 'https://mmustafablog.herokuapp.com/comment';
   constructor(private http: HttpClient, private ar: ActivatedRoute) {}
 
-  addComment(postId: any, comment: object): void {
-    this.http
-      .post(this.url + '/add/' + postId, comment, this.setHeaders())
-      .subscribe((res) => {
-        window.location.reload();
-      });
+  addComment(postId: any, comment: object): any {
+    return this.http.post(
+      this.url + '/add/' + postId,
+      comment,
+      this.setHeaders()
+    );
   }
 
   private setHeaders(): any {

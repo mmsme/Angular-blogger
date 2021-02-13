@@ -1,8 +1,6 @@
 import { ArticleService } from './../services/article.service';
-import { FormControl } from '@angular/forms';
 import { CommentService } from './../services/comment.service';
 import { AuthService } from './../services/auth.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ImgDivService } from './../services/img-div.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,31 +17,19 @@ export class ArticleComponent implements OnInit {
 
   constructor(
     public img: ImgDivService,
-    private http: HttpClient,
     public auth: AuthService,
     private commentServices: CommentService,
     private as: ArticleService
   ) {}
 
   ngOnInit(): void {
-    const header = new HttpHeaders().set(
-      'Authorization',
-      `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1vaGFtZWQxMiIsImVtYWlsIjoiYWxhYUBnbWFpbC5jb20iLCJpZCI6IjYwMjZmOTVjNjQ4NjM1MDAxNTkxNTRiNiIsImlhdCI6MTYxMzE3NzU5NiwiZXhwIjoxNjEzMjYzOTk2fQ.zaxpP2fWvxDISgI3maLS0ZXak8d9sDdVWkYRRZTLAII`
-    ); // may be localStorage/sessionStorage
-    const headers = { headers: header };
-    this.http
-      .get(
-        'https://mmustafablog.herokuapp.com/article/6027186064863500159154bc',
-        headers
-      )
-      .subscribe((res: any) => {
-        this.article = res;
-        this.isLiked = this.as.AleradyLikeIt(this.article.likes);
-        this.getTags(this.article);
-      });
-
-    // tslint:disable-next-line:align
-    // this.as.AleradyLikeIt();
+    this.as.getArticleById('601da5bb2566450015900ec2').subscribe((res: any) => {
+      this.article = res;
+      console.log(this.article);
+      this.isLiked = this.as.AleradyLikeIt(this.article.likes);
+      this.tags = this.article.tages;
+      this.sortComments(this.article.comments);
+    });
   }
 
   divImageShow(img: string): void {
@@ -52,16 +38,25 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  getTags(data: any): void {
-    this.tags = data.tages;
-  }
-
   addComment(data: HTMLTextAreaElement): void {
     const content = { content: data.value };
-    this.commentServices.addComment(this.article._id, content);
+    this.commentServices
+      .addComment(this.article._id, content)
+      .subscribe((res: any) => {
+        this.article = res;
+        this.sortComments(this.article.comments);
+      });
   }
 
   like(): void {
-    // this.as.
+    this.as.likeArticle(this.article._id);
+    this.isLiked = !this.isLiked;
+  }
+
+  sortComments(comments: any[]): void {
+    comments.sort(
+      (a: any, b: any): any =>
+        new Date(a.createdAt).getTime() - new Date().getTime()
+    );
   }
 }
