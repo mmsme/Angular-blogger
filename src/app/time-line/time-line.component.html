@@ -6,7 +6,8 @@
 
 <div class="d-flex flex-wrap">
   <ng-container *ngFor="let item of arr | paginate: { itemsPerPage: 12, currentPage: p }">
-    <app-post [img]="item.image" [name]="item.auther?.fname" class="col-12 col-md-6 col-lg-4">
+    <app-post (selected)="ShowSelected(item._id)" [img]="item.image" [name]="item.auther?.fname"
+      class="col-12 col-md-6 col-lg-4">
       <ng-container class="name">
         {{(item.auther?.fname).charAt(0).toUpperCase() + (item.auther?.fname+' '+item.auther?.lname).slice(1)}}
       </ng-container>

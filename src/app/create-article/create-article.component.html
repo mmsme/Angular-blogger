@@ -26,7 +26,7 @@
       </div>
       <div class="form-group">
         <label for="tags">Tags</label>
-        <input type="text" class="form-control" name="tags" id="tags" placeholder="Tags..">
+        <input type="text" class="form-control" #tags name="tags" id="tags" placeholder="Tags..">
       </div>
       <div class="form-group">
         <label for="textarea">Content</label>
@@ -48,8 +48,8 @@
       <hr>
       <div class="d-flex justify-content-center m-2">
 
-        <button type="submit" class="btn btn-success btn-lg col-12 col-md-4" style="border-radius: 2em;"
-          [disabled]="Content.invalid || Title.invalid">
+        <button type="submit" (click)="createArticle(title,content,tags)" class="btn btn-success btn-lg col-12 col-md-4"
+          style="border-radius: 2em;" [disabled]="Content.invalid || Title.invalid">
           Create
         </button>
       </div>

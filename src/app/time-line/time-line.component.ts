@@ -16,8 +16,13 @@ export class TimeLineComponent implements OnInit {
 
   ngOnInit(): void {
     this.articleServices.getAllArticle().subscribe((data: any) => {
-      this.arr = data;
+      this.arr = data.reverse();
       this.isComplete = true;
     });
+  }
+
+  ShowSelected(e: any): void {
+    console.log('Welcome');
+    console.log(e);
   }
 }

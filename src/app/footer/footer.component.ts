@@ -17,16 +17,14 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.articleServices.getAllArticle().subscribe((data: any) => {
-      this.articles = data;
-      console.log(this.articles);
-
-      this.getRecent(data);
-      this.getRecentTags(data);
+      this.articles = data.reverse();
+      this.getRecent(this.articles);
+      this.getRecentTags(this.articles);
     });
   }
 
   getRecent(data: any[]): void {
-    const last5 = data.splice(0, 5);
+    const last5 = data.slice(0, 5);
 
     for (const item of last5) {
       this.recent.push(item.title);
@@ -34,16 +32,19 @@ export class FooterComponent implements OnInit {
   }
 
   getRecentTags(data: any): void {
-    for (const item of data) {
+    // tslint:disable-next-line:prefer-const
+    for (let item of data) {
       this.addTag(item.tages);
     }
   }
 
   addTag(tag: any): void {
-    console.log(tag);
-    for (const item of tag) {
+    // console.log(tag);
+    // tslint:disable-next-line:prefer-const
+    for (let item of tag) {
       // tslint:disable-next-line:prefer-const
       let x = this.tags.includes(item);
+
       if (x) {
         continue;
       }

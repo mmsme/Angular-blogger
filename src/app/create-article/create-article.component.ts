@@ -1,6 +1,6 @@
+import { ArticleService } from './../services/article.service';
 import { CustomeValidators } from './../common/custom.validators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ImgDivService } from './../services/img-div.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class CreateArticleComponent implements OnInit {
   selectedFile!: File;
   fd = new FormData();
-  constructor(public img: ImgDivService) {}
+
+  constructor(private as: ArticleService) {}
 
   form: FormGroup = new FormGroup({
     title: new FormControl('', [
@@ -44,5 +45,24 @@ export class CreateArticleComponent implements OnInit {
 
   get Content(): any {
     return this.form.get('content');
+  }
+
+  genrateTags(data: HTMLInputElement): any {
+    return data.value.split(' ');
+  }
+
+  createArticle(
+    title: HTMLInputElement,
+    content: HTMLTextAreaElement,
+    tags: HTMLInputElement
+  ): void {
+    this.fd.append('title', title.value);
+    this.fd.append('content', content.value);
+    const tagesArr = this.genrateTags(tags);
+    for (const item of tagesArr) {
+      this.fd.append('tages', item);
+    }
+
+    this.as.createNewArticle(this.fd);
   }
 }

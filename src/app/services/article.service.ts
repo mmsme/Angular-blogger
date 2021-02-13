@@ -12,16 +12,7 @@ export class ArticleService {
 
   // get All Article By ID
   getAllArticle(): any {
-    return this.http
-      .get<any>('https://mmustafablog.herokuapp.com/article')
-      .pipe(
-        map((data) =>
-          data.sort(
-            (a: any, b: any): any =>
-              new Date(a.createdAt).getTime() - new Date().getTime()
-          )
-        )
-      );
+    return this.http.get<any>(this.url);
   }
 
   // check if user Already Like it
@@ -34,10 +25,7 @@ export class ArticleService {
 
   // get Article By ID
   getArticleById(id: any): any {
-    return this.http.get(
-      'https://mmustafablog.herokuapp.com/article/' + id,
-      this.setHeaders()
-    );
+    return this.http.get(this.url + '/' + id, this.setHeaders());
   }
 
   // like Or Unlike The Article
@@ -47,6 +35,21 @@ export class ArticleService {
       .subscribe((res) => {
         console.log(res);
       });
+  }
+
+  // create New Article
+  createNewArticle(article: FormData): any {
+    console.log(article);
+    return this.http
+      .post(this.url + '/create', article, this.setHeaders())
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   private setHeaders(): any {

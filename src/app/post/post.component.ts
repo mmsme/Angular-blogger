@@ -4,6 +4,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 
 @Component({
@@ -19,6 +21,8 @@ export class PostComponent implements OnInit {
   @Input('name') name!: string;
   // tslint:disable-next-line:no-input-rename
   @Input('profileImg') profileImg = '';
+  // tslint:disable-next-line:no-output-rename
+  @Output('selected') selected = new EventEmitter();
 
   showDiv = false;
 
@@ -32,5 +36,9 @@ export class PostComponent implements OnInit {
     if (this.profileImg === '') {
       this.showDiv = !this.showDiv;
     }
+  }
+
+  raiseEvent(): void {
+    this.selected.emit();
   }
 }
