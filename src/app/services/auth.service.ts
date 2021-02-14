@@ -47,7 +47,7 @@ export class AuthService {
   signUp(user: object): any {
     this.http.post(this.url + '/register', user).subscribe((res) => {
       console.log(res);
-      this.route.navigate(['/login']);
+      this.route.navigateByUrl('/home');
     });
   }
 }

@@ -24,11 +24,7 @@ export class FooterComponent implements OnInit {
   }
 
   getRecent(data: any[]): void {
-    const last5 = data.slice(0, 5);
-
-    for (const item of last5) {
-      this.recent.push(item.title);
-    }
+    this.recent = data.slice(0, 5);
   }
 
   getRecentTags(data: any): void {

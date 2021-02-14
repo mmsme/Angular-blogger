@@ -21,9 +21,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TimeLineComponent } from './time-line/time-line.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { PorfilePostComponent } from './porfile-post/porfile-post.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
+import { SearchComponent } from './search/search.component';
+import { AuthGuard } from './services/AuthGuard.service';
+import { UserCardComponent } from './user-card/user-card.component';
+import { WritersComponent } from './writers/writers.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { PostTagsComponent } from './post-tags/post-tags.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [				
     AppComponent,
     NavbarComponent,
     PostComponent,
@@ -37,8 +44,14 @@ import { PorfilePostComponent } from './porfile-post/porfile-post.component';
     ArticleComponent,
     CommentComponent,
     TimeLineComponent,
-      CreateArticleComponent,
-      PorfilePostComponent
+    CreateArticleComponent,
+    PorfilePostComponent,
+    EditArticleComponent,
+    SearchComponent,
+      UserCardComponent,
+      WritersComponent,
+      UserDetailsComponent,
+      PostTagsComponent
    ],
   imports: [
     BrowserModule,
@@ -48,7 +61,7 @@ import { PorfilePostComponent } from './porfile-post/porfile-post.component';
     NgxSkeletonLoaderModule,
     NgxPaginationModule,
   ],
-  providers: [HttpClientModule, FormBuilder],
+  providers: [HttpClientModule, FormBuilder, AuthGuard],
   bootstrap: [AppComponent],
   exports: [PostComponent],
 })

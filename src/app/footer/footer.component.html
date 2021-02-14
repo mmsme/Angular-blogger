@@ -5,7 +5,8 @@
       <p class="tags-title ">Tags Widget</p>
       <div class="d-flex flex-wrap">
         <ng-container *ngFor="let item of tags">
-          <a class="tag m-1 pr-2 pt-1 pb-1 pl-2 rounded-lg" href="#" role="button">{{item}}</a>
+          <a class="tag m-1 pr-2 pt-1 pb-1 pl-2 rounded-lg"
+            [routerLink]="['/home', { outlets: { route1: ['tags', item] } }]" role=" button">{{item}}</a>
         </ng-container>
       </div>
     </div>
@@ -14,7 +15,8 @@
       <p class="tags-title ">Latest Articles</p>
       <div>
         <div class="list-group" *ngFor="let item of recent">
-          <a class="recent m-1 d-block" href="#">&#xbb; {{item}}</a>
+          <a class="recent m-1 d-block" [routerLink]="['/home', { outlets: { route1: ['article', item?._id] } }]">&#xbb;
+            {{item.title}}</a>
         </div>
       </div>
     </div>

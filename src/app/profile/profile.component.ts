@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ArticleService } from './../services/article.service';
 import { UserService } from './../services/user.service';
 import { ImgDivService } from './../services/img-div.service';
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     public img: ImgDivService,
     private userServices: UserService,
-    private article: ArticleService
+    private article: ArticleService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ProfileComponent implements OnInit {
       this.article
         .getArticleByAuther(this.User.username)
         .subscribe((data: any) => {
-          this.UserArticles = data;
+          this.UserArticles = data.reverse();
           console.table(this.UserArticles);
           this.isComplete = true;
         });
@@ -44,5 +46,15 @@ export class ProfileComponent implements OnInit {
 
   deleteArticle(item: any): void {
     this.article.deleteArticle(item);
+  }
+
+  editArticle(id: any): void {
+    alert(id);
+    this.route.navigate(['/home', { outlets: { route1: ['edit', id] } }]);
+  }
+
+  ShowSelected(id: any): void {
+    // tslint:disable-next-line:object-literal-key-quotes
+    this.route.navigate(['/home', { outlets: { route1: ['article', id] } }]);
   }
 }

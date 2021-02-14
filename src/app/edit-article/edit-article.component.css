@@ -1,0 +1,37 @@
+
+.imgDiv{
+  width: 55px;
+  height: 55px;
+  margin-right: 1ex;
+}
+
+.jumbotron{
+  background-image: url('../../assets/img/header2.jpg');
+  background-size: cover;
+  color: #f7f7f7;
+  border-radius: 0;
+}
+
+.lead{
+  color: #f7f7f7a1;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.display-3,
+.navbar-brand {
+  font-family: 'Pacifico',cursive;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+
+.display-3:hover{
+  color: #28C884;
+  transform: scale(1.005);
+}
+
+.content{
+  padding: 1em 3em 1.5em 3em;
+  color: #1d1d1dc9;
+}
+

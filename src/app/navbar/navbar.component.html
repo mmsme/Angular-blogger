@@ -34,11 +34,11 @@
           <a class="nav-link" [routerLink]="['/home']">Home</a>
         </li>
         <li routerLinkActive="active">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" [routerLink]="['/home', { outlets: {'route1':['writers']}}]">Writers</a>
         </li>
         <li routerLinkActive="active">
           <a *ngIf="auth.isLoggedIn()" class="nav-link"
-            [routerLink]="['/home', { outlets: {'route1':['profile','5']}}]">Profile</a>
+            [routerLink]="['/home', { outlets: {'route1':['profile']}}]">Profile</a>
         </li>
       </ul>
 
@@ -52,8 +52,9 @@
         </li>
 
         <!-- Search icon -->
-        <li *ngIf="auth.isLoggedIn()"><a href="#" class="nav-link search-btn mr-2" role="button"><span
-              class="fas fa-search"></span></a>
+        <li *ngIf="auth.isLoggedIn()" routerLinkActive="active"><a
+            [routerLink]="['/home', { outlets: {'route1':['search']}}]" class="nav-link search-btn mr-2"
+            role="button"><span class="fas fa-search"></span></a>
         </li>
 
         <!-- register icon -->

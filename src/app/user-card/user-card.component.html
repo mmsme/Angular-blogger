@@ -1,0 +1,33 @@
+<div class="card text-left">
+  <div class="card-body">
+    <div class="row pl-4 pr-4 d-flex justify-content-between">
+      <div>
+        <div class="media">
+          <div class="d-flex justify-content-center">
+            <div [style.background-color]="img.chooseColor()"
+              class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
+              <span class="h5 p-3">
+                <ng-content select=".char">
+
+                </ng-content>
+              </span>
+            </div>
+          </div>
+          <div class="media-body">
+            <h5 class="mt-0">
+              <ng-content select=".name">
+              </ng-content>
+            </h5>
+            <p>
+              <ng-content select=".username">
+              </ng-content>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12  d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-dark pr-4 pl-4">{{button}}</button>
+      </div>
+    </div>
+  </div>
+</div>

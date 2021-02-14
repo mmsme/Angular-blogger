@@ -1,0 +1,36 @@
+<div class="input-group">
+  <input [formControl]="searchBar" #input type="text" class="form-control" placeholder="" aria-label=""
+    aria-describedby="basic-addon1" [class.is-valid]="!searchBar.invalid && searchBar.touched"
+    [class.is-invalid]="searchBar.invalid && searchBar.touched">
+  <div class="input-group-append">
+    <button [disabled]="searchBar.invalid" class="btn btn-primary" (click)="searchOnArticle(input);" type="button"><i
+        class="fas fa-search"></i>
+      Search</button>
+  </div>
+</div>
+
+<div class="container mt-5 pr-5 pl-5">
+  <div class="d-flex justify-content-center">
+    <ng-container *ngFor="let item of articles">
+      <app-post (click)="ShowSelected(item._id)" [img]="item.image" [name]="item.auther?.fname"
+        class="col-12 col-md-4 col-lg-4">
+        <ng-container class="name">
+          {{(item?.auther?.fname).charAt(0).toUpperCase() + (item?.auther?.fname+' '+item?.auther?.lname).slice(1)}}
+        </ng-container>
+        <ng-container class="username">{{ '@'+item.auther?.username }}</ng-container>
+        <ng-container class="title">{{item.title}}</ng-container>
+        <ng-container class="content">{{item.content | slice:0:30}}...</ng-container>
+        <ng-container class="date">{{item.createdAt | date:'mediumDate'}}</ng-container>
+        <ng-container class="likes">{{item.likes.length}}</ng-container>
+      </app-post>
+    </ng-container>
+  </div>
+
+  <!-- <app-user-card [name]="">
+    <ng-container class="name">
+      Mohamed Mustafa
+    </ng-container>
+    <<ng-container class="username">
+      @Mohamed
+      </ng-container>
+  </app-user-card> -->

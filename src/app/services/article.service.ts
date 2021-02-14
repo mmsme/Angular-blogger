@@ -1,8 +1,6 @@
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +18,6 @@ export class ArticleService {
   AleradyLikeIt(likes: any[]): boolean {
     const uid = JSON.parse(localStorage.getItem('uid') || '');
     const exist = likes.includes(uid);
-    console.log(exist);
     return exist ? true : false;
   }
 
@@ -70,6 +67,32 @@ export class ArticleService {
       .subscribe(() => {
         window.location.reload();
       });
+  }
+
+  getArticleByTitle(title: any): any {
+    return this.http.get(this.url + '/title/' + title, this.setHeaders());
+  }
+
+  // update Article Content
+  updateContent(id: any, data: any): any {
+    return this.http
+      .patch(this.url + '/update/content/' + id, data, this.setHeaders())
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          this.route.navigate([
+            '/home',
+            { outlets: { route1: ['article', res._id] } },
+          ]);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  getArticleByTag(tag: any): any {
+    return this.http.get(this.url + '/tag/' + tag, this.setHeaders());
   }
 
   private setHeaders(): any {
