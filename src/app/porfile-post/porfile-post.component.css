@@ -1,0 +1,58 @@
+
+
+.card {
+  border-radius: 1em;
+  transition: all 500ms;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.192);
+  transform: scale(1.002);
+}
+
+.fa-clock{
+  color: #28886c;
+}
+
+.create-date{
+  font-size: medium;
+  font-family: 'Nunito',
+  sans-serif;
+  font-family: 'Rubik',
+  sans-serif;
+  opacity: 0.8;
+  font-size: 2ex;
+}
+
+.fa-heart{
+  color: rgb(32, 136, 79);
+}
+
+.name{
+  font-size: medium;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.678)
+}
+
+.username{
+  font-size: medium;
+  font-style: normal;
+  font-weight: 500;
+  color: rgb(97, 97, 97);
+}
+
+
+.imgDiv{
+  width: 60px;
+  height: 60px;
+}
+
+.card-title{
+  color: #1d1d1dc4;
+}
+
+.card-text{
+  font-size: large;
+  color: #1d1d1dc4;
+}

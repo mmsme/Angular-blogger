@@ -58,6 +58,20 @@ export class ArticleService {
       );
   }
 
+  // get Post Auther
+  getArticleByAuther(username: any): any {
+    return this.http.get(this.url + '/author/' + username, this.setHeaders());
+  }
+
+  // delete Artice By Id
+  deleteArticle(id: any): any {
+    return this.http
+      .delete(this.url + '/' + id, this.setHeaders())
+      .subscribe(() => {
+        window.location.reload();
+      });
+  }
+
   private setHeaders(): any {
     const token = localStorage.getItem('user') || '';
     let headers: HttpHeaders = new HttpHeaders();

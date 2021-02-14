@@ -1,15 +1,21 @@
 <div class="container mt-4">
+
   <div class="row">
     <div class="d-none d-lg-block col-7">
-
-      <div class="d-flex flex-wrap">
-        <ng-container *ngFor="let item of arr">
-          <app-post>
+      <h2>All {{img.nameToCaptial(User?.fname+' '+User?.lname)}} articles</h2>
+      <div>
+        <ng-container *ngFor="let item of UserArticles">
+          <app-porfile-post (delete)="deleteArticle(item._id)" [img]="item.image" [name]="item.auther?.fname"
+            class="col-12 col-md-4 col-lg-4">
+            <ng-container class="name">
+              {{(item?.auther?.fname).charAt(0).toUpperCase() + (item?.auther?.fname+' '+item?.auther?.lname).slice(1)}}
+            </ng-container>
+            <ng-container class="username">{{ '@'+item.auther?.username }}</ng-container>
             <ng-container class="title">{{item.title}}</ng-container>
-            <ng-container class="content">{{item.content | slice:0:100}}</ng-container>
+            <ng-container class="content">{{item.content | slice:0:30}}...</ng-container>
             <ng-container class="date">{{item.createdAt | date:'mediumDate'}}</ng-container>
             <ng-container class="likes">{{item.likes.length}}</ng-container>
-          </app-post>
+          </app-porfile-post>
         </ng-container>
 
       </div>
@@ -20,28 +26,28 @@
         <div class="d-flex justify-content-center">
           <div [style.background-color]="img.chooseColor()"
             class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
-            <span class="h1 p-5">{{img.genrateChar('A')}}</span>
+            <span class="h1 p-5">{{ img.genrateChar(User?.fname) }}</span>
           </div>
         </div>
         <div class="card-body">
-          <p class="h5">Christopher Gallardo</p>
-          <p class="h6">@Username</p>
+          <p class="h5">{{ img.nameToCaptial(User?.fname+' '+User?.lname) }}</p>
+          <p class="h6">@{{User?.username}}</p>
           <br>
-          <button type="button" class="btn shadow-sm">Follow</button>
+          <!-- <button type="button" class="btn shadow-sm">Follow</button> -->
         </div>
 
         <div class="row d-flex justify-content-between p-4">
           <div class="tabs text-center">
-            <p class="text m-0">1021</p>
+            <p class="text m-0">{{User?.following.length}}</p>
             <p class="solgan m-0">Followers</p>
           </div>
           <div class="tabs text-center">
-            <p class="text m-0">1021</p>
+            <p class="text m-0">{{following?.length}}</p>
             <p class="solgan m-0">Following</p>
           </div>
           <div class="tabs text-center">
-            <p class="text m-0">1021</p>
-            <p class="solgan m-0">Postes</p>
+            <p class="text m-0">{{UserArticles.length}}</p>
+            <p class="solgan m-0">Articles</p>
           </div>
         </div>
       </div>

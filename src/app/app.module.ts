@@ -20,9 +20,10 @@ import { CommentComponent } from './comment/comment.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TimeLineComponent } from './time-line/time-line.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { PorfilePostComponent } from './porfile-post/porfile-post.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     NavbarComponent,
     PostComponent,
@@ -36,7 +37,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     ArticleComponent,
     CommentComponent,
     TimeLineComponent,
-      CreateArticleComponent
+      CreateArticleComponent,
+      PorfilePostComponent
    ],
   imports: [
     BrowserModule,

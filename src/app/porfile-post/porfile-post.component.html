@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card mt-4 p-0">
+    <div class="row p-2 pl-4 pr-4 d-flex justify-content-between">
+      <div class=" row m-2 ">
+        <div>
+          <div [style.background-color]="img.chooseColor()"
+            class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
+            <span class="h5 p-3">{{img.genrateChar(name)}}</span>
+          </div>
+        </div>
+        <div class="ml-2 p-1">
+          <div class="name">
+            <ng-content select=".name"></ng-content>
+          </div>
+          <div class="username">
+            <ng-content select=".username"></ng-content>
+          </div>
+        </div>
+      </div>
+      <!-- ------------------------------------- -->
+      <div class="m-2">
+        <div class="dropdown mt-2 float-right  dropleft">
+          <a class="btn " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-ellipsis-h"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" (click)="onEditClicked()">Edit</a>
+            <a class="dropdown-item" (click)="onDeleteClicked()">Delete</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <img class="card-img-top" height="230" src="{{imgSrc}}" alt="Card image cap"
+      onerror="this.src='assets/img/no-image-available.png'">
+    <div class="card-body">
+      <h4 class="card-title">
+        <ng-content select=".title"></ng-content>
+      </h4>
+      <p class="card-text p-2">
+        <ng-content select=".content"></ng-content>
+      </p>
+      <hr>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="create-date">
+          <span class="far fa-clock mr-1"></span>
+          <ng-content select=".date"></ng-content>
+        </div>
+        <div class="align-items-end">
+          <span class="fas fa-heart"></span>
+          <span class="p-1">
+            <ng-content select=".likes"></ng-content>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
