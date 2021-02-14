@@ -11,14 +11,21 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+.title-link{
+  color: #f7f7f7;
+  text-decoration: none;
+}
+
 .display-3,
-.navbar-brand {
+.navbar-brand,
+.title-link {
   font-family: 'Pacifico',cursive;
   transition: all 200ms;
   cursor: pointer;
 }
 
-.display-3:hover{
+.display-3:hover,
+.title-link:hover{
   color: #28C884;
   transform: scale(1.005);
 }

@@ -1,5 +1,6 @@
 import { ArticleService } from './../services/article.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-time-line',
@@ -12,7 +13,7 @@ export class TimeLineComponent implements OnInit {
   isComplete = false;
   p: any;
 
-  constructor(private articleServices: ArticleService) {}
+  constructor(private articleServices: ArticleService, private route: Router) {}
 
   ngOnInit(): void {
     this.articleServices.getAllArticle().subscribe((data: any) => {
@@ -21,8 +22,8 @@ export class TimeLineComponent implements OnInit {
     });
   }
 
-  ShowSelected(e: any): void {
-    console.log('Welcome');
-    console.log(e);
+  ShowSelected(id: any): void {
+    // tslint:disable-next-line:object-literal-key-quotes
+    this.route.navigate(['/home', { outlets: { route1: ['article', id] } }]);
   }
 }

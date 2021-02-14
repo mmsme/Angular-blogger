@@ -1,3 +1,4 @@
+import { ImgDivService } from './../services/img-div.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   arr: any = [];
-  constructor(private http: HttpClient) {}
+  constructor(public img: ImgDivService) {}
 
-  ngOnInit(): void {
-    this.http
-      .get<any>('https://mmustafablog.herokuapp.com/article')
-      .subscribe((res) => {
-        this.arr = res;
-      });
-  }
+  ngOnInit(): void {}
 }

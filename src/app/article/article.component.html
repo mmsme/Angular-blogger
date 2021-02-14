@@ -67,12 +67,12 @@
     <div *ngIf="auth.isLoggedIn()">
 
       <div class="row no-gutters p-2">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-9">
           <div class="form-group mt-4 ml-4">
             <textarea class="comment form-control" #comment rows="3"></textarea>
           </div>
         </div>
-        <div class="col-12 col-md-2 p-4">
+        <div class="col-12 col-md-3 p-4">
           <button type="button" class="btn btn-success" (click)="addComment(comment)">Add Comment</button>
         </div>
       </div>

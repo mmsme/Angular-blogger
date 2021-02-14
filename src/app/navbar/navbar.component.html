@@ -1,6 +1,6 @@
 <div class="jumbotron text-center m-0">
   <div class="contanier-fluid">
-    <h1 class="display-3">Blogify</h1>
+    <h1 class="display-3"><a class="title-link" [routerLink]="['/home']">Blogify</a></h1>
     <p class="lead mt-4">A simple blog project createrd by ITI Students</p>
     <div class="row mt-4 d-sm-flex justify-content-center">
       <a href="https://www.facebook.com/mohamed.mostafashaaban.1"><span class="fab fa-facebook-square"></span></a>
@@ -30,13 +30,13 @@
 
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link">Home</a>
+        <li routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
         </li>
-        <li class="nav-item">
+        <li routerLinkActive="active">
           <a class="nav-link" href="#">About</a>
         </li>
-        <li class="nav-item">
+        <li routerLinkActive="active">
           <a *ngIf="auth.isLoggedIn()" class="nav-link"
             [routerLink]="['/home', { outlets: {'route1':['profile','5']}}]">Profile</a>
         </li>
@@ -46,7 +46,8 @@
         <!-- change the content based on user status -->
 
         <!-- Write Post Icon -->
-        <li *ngIf="auth.isLoggedIn()"><a href="#" class="nav-link mr-2" role="button"><span
+        <li *ngIf="auth.isLoggedIn()" routerLinkActive="active"><a
+            [routerLink]="['/home', { outlets: {'route1':['create']}}]" class="nav-link mr-2" role="button"><span
               class="fas fa-pen mr-1"></span></a>
         </li>
 

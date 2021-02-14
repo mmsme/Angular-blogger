@@ -2,6 +2,7 @@ import { ArticleService } from './../services/article.service';
 import { CustomeValidators } from './../common/custom.validators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-article',
@@ -12,7 +13,7 @@ export class CreateArticleComponent implements OnInit {
   selectedFile!: File;
   fd = new FormData();
 
-  constructor(private as: ArticleService) {}
+  constructor(private as: ArticleService, private route: Router) {}
 
   form: FormGroup = new FormGroup({
     title: new FormControl('', [

@@ -58,3 +58,12 @@
 .profile{
   position: fixed;
 }
+
+
+
+.imgDiv{
+  width: 150px;
+  height: 150px;
+  margin-right: 1ex;
+   color: #f7f7f7;
+}

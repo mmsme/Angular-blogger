@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class ArticleService {
   private url = 'https://mmustafablog.herokuapp.com/article';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   // get All Article By ID
   getAllArticle(): any {
@@ -39,12 +40,17 @@ export class ArticleService {
 
   // create New Article
   createNewArticle(article: FormData): any {
-    console.log(article);
+    console.log('From fun');
+
     return this.http
       .post(this.url + '/create', article, this.setHeaders())
       .subscribe(
-        (res) => {
+        (res: any) => {
           console.log(res);
+          this.route.navigate([
+            '/home',
+            { outlets: { route1: ['article', res._id] } },
+          ]);
         },
         (err) => {
           console.log(err);
