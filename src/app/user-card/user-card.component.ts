@@ -10,8 +10,6 @@ import { ImgDivService } from '../services/img-div.service';
 export class UserCardComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('name') name!: string;
-  // tslint:disable-next-line:no-input-rename
-  @Input('users') users!: any[];
   // tslint:disable-next-line:no-output-rename
   @Output('follow') follow = new EventEmitter();
   button!: string;
@@ -20,11 +18,7 @@ export class UserCardComponent implements OnInit {
   constructor(public img: ImgDivService, private userServices: UserService) {}
 
   ngOnInit(): void {
-    if (!this.userServices.followFlag(this.users)) {
-      this.button = 'Follow';
-    } else {
-      this.button = 'Unfollow';
-    }
+
   }
 
   onFollowClicked(): void {
