@@ -4,7 +4,7 @@
       <div>
         <div class="media">
           <div class="d-flex justify-content-center">
-            <div [style.background-color]="img.chooseColor()"
+            <div [style.background-color]="img.chooseColor(name)"
               class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
               <span class="h5 p-3">
                 <ng-content select=".char">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="col-12  d-flex justify-content-end">
-        <button type="button" class="btn btn-outline-dark pr-4 pl-4">{{button}}</button>
+        <button type="button" class="btn btn-outline-dark pr-4 pl-4">Follow</button>
       </div>
     </div>
   </div>

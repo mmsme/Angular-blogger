@@ -1,7 +1,7 @@
 <div class="media">
   <img *ngIf="!showDiv" class="d-flex mr-3" height="50" width="50" src="" alt="Generic placeholder image"
     class="rounded-circle mr-3">
-  <div *ngIf="showDiv" [style.background-color]="imgServices.chooseColor()"
+  <div *ngIf="showDiv" [style.background-color]="imgServices.chooseColor(name)"
     class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
     <span class="h5 p-3">{{imgServices.genrateChar(name)}}</span>
   </div>

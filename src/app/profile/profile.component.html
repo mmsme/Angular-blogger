@@ -3,9 +3,9 @@
   <div class="row">
     <div id="profile" class="col-12 col-lg-4 text-center">
 
-      <div class="card shadow">
+      <div class="card shadow pt-4">
         <div class="d-flex justify-content-center">
-          <div [style.background-color]="img.chooseColor()"
+          <div [style.background-color]="img.chooseColor(User?.fname)"
             class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
             <span class="h1 p-5">{{ img.genrateChar(User?.fname) }}</span>
           </div>
@@ -34,7 +34,9 @@
       </div>
     </div>
     <div class="col-12 col-lg-7">
-      <h2>All {{img.nameToCaptial(User?.fname+' '+User?.lname)}} articles</h2>
+      <div class="text-center">
+        <h2 style="color: rgba(0, 0, 0, 0.507);">Your Articles</h2>
+      </div>
       <div>
         <ng-container *ngFor="let item of UserArticles">
           <app-porfile-post (dblclick)="ShowSelected(item._id)" (delete)="deleteArticle(item._id)"

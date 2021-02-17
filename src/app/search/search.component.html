@@ -10,7 +10,7 @@
 </div>
 
 <div class="container mt-5 pr-5 pl-5">
-  <div class="d-flex justify-content-center">
+  <div class="d-flex flex-wrap">
     <ng-container *ngFor="let item of articles">
       <app-post (click)="ShowSelected(item._id)" [img]="item.image" [name]="item.auther?.fname"
         class="col-12 col-md-4 col-lg-4">
