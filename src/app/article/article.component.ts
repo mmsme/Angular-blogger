@@ -61,7 +61,7 @@ export class ArticleComponent implements OnInit {
   }
 
   sortComments(comments: any[]): void {
-    comments.sort(
+    comments?.sort(
       (a: any, b: any): any =>
         new Date(a.createdAt).getTime() - new Date().getTime()
     );

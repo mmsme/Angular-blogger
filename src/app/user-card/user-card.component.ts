@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { UserService } from './../services/user.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ImgDivService } from '../services/img-div.service';
@@ -10,18 +11,36 @@ import { ImgDivService } from '../services/img-div.service';
 export class UserCardComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('name') name!: string;
-  // tslint:disable-next-line:no-output-rename
-  @Output('follow') follow = new EventEmitter();
+  @Input('followers') followers: any[] = [];
+  @Input('auther') autherID: any;
+
   button!: string;
 
   flag!: boolean;
-  constructor(public img: ImgDivService, private userServices: UserService) {}
+  constructor(
+    public img: ImgDivService,
+    private userServices: UserService,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {
+    const user = this.auth.getCurrentUser();
+    this.checkIfFollow(user);
+  }
 
+  checkIfFollow(uid: any): void {
+    this.flag = this.followers.includes(JSON.parse(uid));
   }
 
   onFollowClicked(): void {
-    this.follow.emit();
+    this.flag = !this.flag; // change flag
+    this.userServices.followAuther(this.autherID).subscribe(
+      () => {},
+      () => {
+        this.flag = !this.flag; // rollback
+      }
+    );
   }
+
+  navigateToProfile() {}
 }

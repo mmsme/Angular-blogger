@@ -21,15 +21,17 @@ export class UserService {
     return this.http.get(this.url + '/followers', this.setHeaders());
   }
 
-  searchByUsername(username: any): any {
-    return this.http.get(this.url + '/name/' + username, this.setHeaders());
+  // searchByname(username: any): any {
+  //   return this.http.get(this.url + '/name/' + username, this.setHeaders());
+  // }
+
+  followAuther(autherId: any): any{
+    return this.http.post(this.url + '/follow/' + autherId,'', this.setHeaders());
   }
 
-  followFlag(users: any[]): boolean {
-    const uid = JSON.parse(localStorage.getItem('uid') || '');
-    const exist = users.includes(uid);
-    console.log(exist);
-    return exist ? true : false;
+
+  getUserByName(name: any): any {
+    return this.http.get(this.url + '/name/' + name, this.setHeaders());
   }
 
   private setHeaders(): any {

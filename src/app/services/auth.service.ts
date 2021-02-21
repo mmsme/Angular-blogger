@@ -44,6 +44,11 @@ export class AuthService {
     return !isExpired;
   }
 
+  getCurrentUser(): any{
+    let uid = localStorage.getItem('uid');
+    return uid;
+  }
+
   signUp(user: object): any {
     this.http.post(this.url + '/register', user).subscribe((res) => {
       console.log(res);

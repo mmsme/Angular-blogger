@@ -14,7 +14,6 @@
           <p class="h5">{{ img.nameToCaptial(User?.fname+' '+User?.lname) }}</p>
           <p class="h6">@{{User?.username}}</p>
           <br>
-          <!-- <button type="button" class="btn shadow-sm">Follow</button> -->
         </div>
 
         <div class="row d-flex justify-content-between p-4">
@@ -36,6 +35,14 @@
     <div class="col-12 col-lg-7">
       <div class="text-center">
         <h2 style="color: rgba(0, 0, 0, 0.507);">Your Articles</h2>
+      </div>
+      <div *ngIf="UserArticles?.length == 0">
+        <div class="jumbotron jumbotron-fluid mt-3 text-center"
+          style="border-radius: 1em; background-color: transparent;">
+          <div class="container">
+            <h1 style="opacity: 0.8;" class="display-4">No Articles to Show</h1>
+          </div>
+        </div>
       </div>
       <div>
         <ng-container *ngFor="let item of UserArticles">

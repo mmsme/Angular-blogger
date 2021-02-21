@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { ImgDivService } from './../services/img-div.service';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,11 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WritersComponent implements OnInit {
   usersArr: any = [];
-  constructor(public userServices: UserService, public img: ImgDivService) {}
+  currentUserId!: any;
+
+  constructor(
+    public userServices: UserService,
+    public img: ImgDivService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.userServices.getAllUsers().subscribe((users: any) => {
       this.usersArr = users;
+      const index = this.usersArr.findIndex(
+        (e: any) => e._id == JSON.parse(this.auth.getCurrentUser())
+      );
+
+      this.usersArr.splice(index, 1);
     });
   }
 }

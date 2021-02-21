@@ -4,6 +4,14 @@
   </ng-container>
 </div>
 
+<div *ngIf="arr.length == 0">
+  <div class="jumbotron jumbotron-fluid text-center shadow" style="border-radius: 1em;">
+    <div class="container">
+      <h1 class="display-3" style="opacity: 0.8;">There is no data to show</h1>
+    </div>
+  </div>
+</div>
+
 <div class="d-flex flex-wrap">
   <ng-container *ngFor="let item of arr | paginate: { itemsPerPage: 12, currentPage: p }">
     <app-post (selected)="ShowSelected(item._id)" [img]="item.image" [name]="item.auther?.fname"

@@ -76,9 +76,9 @@ export class SignUpComponent implements OnInit {
     dob: HTMLInputElement
   ): void {
     const user = {
-      fname: fname.value,
-      lname: lname.value,
-      username: username.value,
+      fname: fname.value.toLocaleLowerCase(),
+      lname: lname.value.toLocaleLowerCase(),
+      username: username.value.toLocaleLowerCase(),
       email: email.value,
       password: password.value,
       address: address.value,

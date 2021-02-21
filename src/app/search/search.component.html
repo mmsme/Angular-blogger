@@ -3,13 +3,28 @@
     aria-describedby="basic-addon1" [class.is-valid]="!searchBar.invalid && searchBar.touched"
     [class.is-invalid]="searchBar.invalid && searchBar.touched">
   <div class="input-group-append">
-    <button [disabled]="searchBar.invalid" class="btn btn-primary" (click)="searchOnArticle(input);" type="button"><i
+    <button [disabled]="searchBar.invalid" class="btn btn-primary" (click)="search(input);" type="button"><i
         class="fas fa-search"></i>
       Search</button>
   </div>
 </div>
 
-<div class="container mt-5 pr-5 pl-5">
+
+<div class="mt-3">
+  <div class="d-flex flex-wrap">
+    <ng-container *ngFor="let item of users">
+      <app-user-card class="col-12 col-md-6 col-lg-4" [name]="item.fname" [auther]="item._id"
+        [followers]="item?.following">
+        <ng-container class="name">
+          {{img.nameToCaptial(item?.fname+' '+item?.lname)}}
+        </ng-container>
+        <ng-container class="username">
+          {{'@'+item?.username}}
+        </ng-container>
+      </app-user-card>
+    </ng-container>
+  </div>
+
   <div class="d-flex flex-wrap">
     <ng-container *ngFor="let item of articles">
       <app-post (click)="ShowSelected(item._id)" [img]="item.image" [name]="item.auther?.fname"
@@ -25,12 +40,4 @@
       </app-post>
     </ng-container>
   </div>
-
-  <!-- <app-user-card [name]="">
-    <ng-container class="name">
-      Mohamed Mustafa
-    </ng-container>
-    <<ng-container class="username">
-      @Mohamed
-      </ng-container>
-  </app-user-card> -->
+</div>

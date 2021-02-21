@@ -17,7 +17,7 @@ export class ArticleService {
   // check if user Already Like it
   AleradyLikeIt(likes: any[]): boolean {
     const uid = JSON.parse(localStorage.getItem('uid') || '');
-    const exist = likes.includes(uid);
+    const exist = likes?.includes(uid);
     return exist ? true : false;
   }
 

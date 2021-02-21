@@ -44,6 +44,10 @@ export class FooterComponent implements OnInit {
       if (x) {
         continue;
       }
+      if (item.trim().length == 0){
+        continue;
+      }
+
       this.tags.push(item);
     }
   }
