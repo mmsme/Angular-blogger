@@ -28,6 +28,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { WritersComponent } from './writers/writers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { PostTagsComponent } from './post-tags/post-tags.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [				
@@ -51,7 +52,8 @@ import { PostTagsComponent } from './post-tags/post-tags.component';
       UserCardComponent,
       WritersComponent,
       UserDetailsComponent,
-      PostTagsComponent
+      PostTagsComponent,
+      EditProfileComponent
    ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { AuthService } from './../services/auth.service';
 import { ImgDivService } from './../services/img-div.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article',
@@ -80,5 +81,13 @@ export class ArticleComponent implements OnInit {
       this.sortComments(this.article.comments);
       this.likesCount = this.article.likes.length;
     });
+  }
+
+  removeDeletedComment(id: any) {
+    const index = this.article.comments.findIndex((e: any) => {
+      return e._id == id;
+    });
+
+    this.article.comments.splice(index, 1);
   }
 }

@@ -16,10 +16,10 @@ export class CommentComponent implements OnInit {
   @Input('autherId') autherId = '';
   @Input('commentId') commentId!: string;
   @Output('change') change = new EventEmitter();
+  @Output('delete') delete = new EventEmitter();
 
   loggedUserId!: any;
   operationFlag = false;
-  enableEdit = false;
 
   showDiv = false;
 
@@ -45,17 +45,15 @@ export class CommentComponent implements OnInit {
     this.operationFlag = this.autherId == this.loggedUserId ? true : false;
   }
 
-  editComment(data: HTMLDivElement) {
-    this.enableEdit = false;
-    const comment = { content: data.textContent };
+  editComment(data: HTMLTextAreaElement) {
+    const comment = { content: data.value };
     this.comment.editComment(this.commentId, comment).subscribe(() => {
       this.change.emit();
     });
   }
 
   deleteComment() {
-    this.comment.deleteComment(this.commentId).subscribe(() => {
-      this.change.emit();
-    });
+    this.delete.emit(this.commentId);
+    this.comment.deleteComment(this.commentId).subscribe(() => {});
   }
 }

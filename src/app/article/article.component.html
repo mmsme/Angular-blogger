@@ -66,13 +66,13 @@
 
     <div *ngIf="auth.isLoggedIn()">
 
-      <div class="row no-gutters p-2">
-        <div class="col-12 col-md-9">
-          <div class="form-group mt-4 ml-4">
-            <textarea class="comment form-control" #comment rows="3"></textarea>
+      <div>
+        <div class="col-12 mt-4">
+          <div class="form-group">
+            <textarea class="comment border-teal form-control" #comment rows="3"></textarea>
           </div>
         </div>
-        <div class="col-12 col-md-3 p-4">
+        <div class="d-flex justify-content-end mr-3">
           <button type="button" class="btn btn-success" (click)="addComment(comment)">Add Comment</button>
         </div>
       </div>
@@ -80,8 +80,8 @@
       <hr>
 
       <div class="m-4" *ngFor="let item of article?.comments">
-        <app-comment (change)="loadData()" [commentId]="item._id" [autherId]="item.auther._id"
-          [name]="img.nameToCaptial(item.auther.fname+' '+item.auther.lname)">
+        <app-comment (change)="loadData()" (delete)="removeDeletedComment($event)" [commentId]="item._id"
+          [autherId]="item.auther._id" [name]="img.nameToCaptial(item.auther.fname+' '+item.auther.lname)">
           <ng-container class="content">
             {{item?.content}}
           </ng-container>

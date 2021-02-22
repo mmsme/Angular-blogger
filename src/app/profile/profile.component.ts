@@ -61,4 +61,11 @@ export class ProfileComponent implements OnInit {
       this.following = data;
     });
   }
+
+  navigateToEdit() {
+    this.route.navigate([
+      '/home',
+      { outlets: { route1: ['editProfile', this.User._id] } },
+    ]);
+  }
 }

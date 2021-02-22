@@ -13,6 +13,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -59,6 +60,12 @@ const routes: Routes = [
       {
         path: 'tags/:tag',
         component: PostTagsComponent,
+        outlet: 'route1',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'editProfile/:id',
+        component: EditProfileComponent,
         outlet: 'route1',
         canActivate: [AuthGuard],
       },

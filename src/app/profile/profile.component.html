@@ -4,7 +4,7 @@
     <div id="profile" class="col-12  text-center mb-2">
       <div class="card shadow">
         <div class="d-flex justify-content-end">
-          <button type="button" class="icon-button"><i class="fas fa-user-edit"></i></button>
+          <button type="button" class="icon-button" (click)="navigateToEdit()"><i class="fas fa-user-edit"></i></button>
         </div>
         <div class="d-flex justify-content-center">
           <div [style.background-color]="img.chooseColor(User?.fname)"
