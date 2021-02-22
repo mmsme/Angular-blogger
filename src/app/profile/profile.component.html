@@ -3,11 +3,10 @@
   <div>
     <div id="profile" class="col-12  text-center mb-2">
       <div class="card shadow">
-        <div class="jumbotron m-0" style="height: 250px;">
-
-
+        <div class="d-flex justify-content-end">
+          <button type="button" class="icon-button"><i class="fas fa-user-edit"></i></button>
         </div>
-        <div class="d-flex justify-content-center" style="margin-top: -4em;">
+        <div class="d-flex justify-content-center">
           <div [style.background-color]="img.chooseColor(User?.fname)"
             class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
             <span class="h1 p-5">{{ img.genrateChar(User?.fname) }}</span>
@@ -19,26 +18,26 @@
           <br>
         </div>
 
-        <div class="row d-flex justify-content-around p-4">
-          <div class="tabs text-center" (click)="showFlag = 1">
+        <ul class="nav nav-pills nav-fill p-3">
+          <li class="nav-item tabs" (click)="showFlag = 1" [class.tab-active]="showFlag == 1">
             <p class="text m-0">{{User?.following.length}}</p>
             <p class=" solgan m-0">Followers</p>
-          </div>
-          <div class="tabs text-center" (click)="showFlag = 2">
+          </li>
+          <li class="nav-item tabs" (click)="showFlag = 2" [class.tab-active]="showFlag == 2">
             <p class="text m-0">{{following?.length}}</p>
             <p class="solgan m-0">Following</p>
-          </div>
-          <div class="tabs text-center" (click)="showFlag = 3">
+          </li>
+          <li class="nav-item tabs" (click)="showFlag = 3" [class.tab-active]="showFlag == 3">
             <p class="text m-0">{{UserArticles.length}}</p>
             <p class="solgan m-0">Articles</p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- -------------------------------------------------------- -->
     <div class="col-12 mt-5">
       <div *ngIf="showFlag == 3">
-        <div class="text-center">
+        <div class="text-center m-2">
           <h2 style="color: rgba(0, 0, 0, 0.507);">Your Articles</h2>
         </div>
         <div *ngIf="UserArticles?.length == 0">
@@ -49,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap mt-4">
           <ng-container *ngFor="let item of UserArticles">
             <app-porfile-post (dblclick)="ShowSelected(item._id)" (delete)="deleteArticle(item._id)"
               (edit)="editArticle(item._id)" [img]="item.image" [name]="item.auther?.fname" class="col-12 col-md-6">

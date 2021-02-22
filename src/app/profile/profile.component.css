@@ -54,18 +54,45 @@
   box-shadow: 1px 1px 15px #1b262c3a;
 }
 
+.tab-active{
+  transform: scale(1.05);
+  border-radius: 2ex;
+  color: #f7f7f7;
+  background-color: #00C853;
+  box-shadow: 1px 1px 15px #1b262c3a;
+}
+
+.tab-active .text{
+  color: #f7f7f7;
+}
+
+.tab-active .solgan{
+  color: #f7f7f788;
+}
 
 .profile{
   position: fixed;
 }
 
-.jumbotron{
-  background-image: url('../../assets/img/undraw_profile_6l1l.svg');
-}
+
 
 .imgDiv{
   width: 150px;
   height: 150px;
   margin-right: 1ex;
    color: #f7f7f7;
+}
+
+.icon-button{
+  margin: 1ex;
+  font-size: 3ex;
+  background-color:  transparent;
+  color: #1b262c;
+  border: none;
+  transition: all 500ms;
+}
+
+.icon-button:hover{
+  transform: scale(1.08);
+  color: #00C853;
 }
