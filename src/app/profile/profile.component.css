@@ -59,7 +59,9 @@
   position: fixed;
 }
 
-
+.jumbotron{
+  background-image: url('../../assets/img/undraw_profile_6l1l.svg');
+}
 
 .imgDiv{
   width: 150px;

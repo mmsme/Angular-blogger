@@ -80,7 +80,8 @@
       <hr>
 
       <div class="m-4" *ngFor="let item of article?.comments">
-        <app-comment [name]="img.nameToCaptial(item.auther.fname+' '+item.auther.lname)">
+        <app-comment (change)="loadData()" [commentId]="item._id" [autherId]="item.auther._id"
+          [name]="img.nameToCaptial(item.auther.fname+' '+item.auther.lname)">
           <ng-container class="content">
             {{item?.content}}
           </ng-container>

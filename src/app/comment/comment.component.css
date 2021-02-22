@@ -14,3 +14,7 @@
   height: 55px;
   margin-right: 1ex;
 }
+
+.comment-active{
+  background-color: #51c1d53d;
+}

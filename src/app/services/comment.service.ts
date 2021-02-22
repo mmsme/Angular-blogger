@@ -17,6 +17,21 @@ export class CommentService {
     );
   }
 
+  editComment(commentId: any, content: any) {
+    return this.http.patch(
+      this.url + '/update/' + commentId,
+      content,
+      this.setHeaders()
+    );
+  }
+
+  deleteComment(commentId: any) {
+    return this.http.delete(
+      this.url + '/delete/' + commentId,
+      this.setHeaders()
+    );
+  }
+
   private setHeaders(): any {
     const token = localStorage.getItem('user') || '';
     console.log(token);

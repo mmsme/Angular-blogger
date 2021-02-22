@@ -9,8 +9,20 @@
     <h5 class="mt-0">
       {{name}}
     </h5>
-    <div class="content p-3 d-flex flex-column">
-      <ng-content select=".content"></ng-content>
+    <div class="content p-3 d-flex flex-column" [class.comment-active]="operationFlag">
+      <div *ngIf="operationFlag" style="cursor: pointer;" class="dropdown align-self-end  dropleft">
+        <a class="btn btn-sm" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fas fa-ellipsis-h"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a class="dropdown-item" (click)="enableEdit = true">Edit</a>
+          <a class="dropdown-item" (click)="deleteComment()">Delete</a>
+        </div>
+      </div>
+      <span [attr.contenteditable]="enableEdit" #comment (keyup.enter)="editComment(comment)">
+        <ng-content select=".content"></ng-content>
+      </span>
       <div class="align-self-end mt-2">
         <i class="far fa-clock" style="color: #28c886;"></i>
         <ng-content select=".date"></ng-content>

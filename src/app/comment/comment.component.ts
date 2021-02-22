@@ -1,5 +1,7 @@
+import { CommentService } from './../services/comment.service';
+import { AuthService } from './../services/auth.service';
 import { ImgDivService } from './../services/img-div.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -11,17 +13,48 @@ export class CommentComponent implements OnInit {
   @Input('image') img = '';
   // tslint:disable-next-line:no-input-rename
   @Input('name') name = '';
+  @Input('autherId') autherId = '';
+  @Input('commentId') commentId!: string;
+  @Output('change') change = new EventEmitter();
+
+  loggedUserId!: any;
+  operationFlag = false;
+  enableEdit = false;
+
   showDiv = false;
 
-  constructor(public imgServices: ImgDivService) {}
+  constructor(
+    public imgServices: ImgDivService,
+    private auth: AuthService,
+    private comment: CommentService
+  ) {}
 
   ngOnInit(): void {
     this.divImageShow();
+    this.loggedUserId = JSON.parse(this.auth.getCurrentUser());
+    this.openCommnetOperation();
   }
 
   divImageShow(): void {
     if (this.img === '') {
       this.showDiv = !this.showDiv;
     }
+  }
+
+  openCommnetOperation() {
+    this.operationFlag = this.autherId == this.loggedUserId ? true : false;
+  }
+
+  editComment(data: HTMLSpanElement) {
+    const comment = { content: data.textContent };
+    this.comment.editComment(this.commentId, comment).subscribe(() => {
+      this.change.emit();
+    });
+  }
+
+  deleteComment() {
+    this.comment.deleteComment(this.commentId).subscribe(() => {
+      this.change.emit();
+    });
   }
 }

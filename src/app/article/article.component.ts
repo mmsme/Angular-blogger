@@ -16,6 +16,7 @@ export class ArticleComponent implements OnInit {
   tags = [];
   isLiked!: boolean;
   likesCount!: number;
+  id!: any;
 
   constructor(
     public img: ImgDivService,
@@ -28,16 +29,13 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     // tslint:disable-next-line:no-shadowed-variable
     this.ar.params.subscribe((url) => {
-      let id;
-      id = url.id;
-      this.articleService.getArticleById(id).subscribe((res: any) => {
+      this.id = url.id;
+      this.articleService.getArticleById(this.id).subscribe((res: any) => {
         this.article = res;
-        console.log(this.article);
         this.isLiked = this.articleService.AleradyLikeIt(this.article.likes);
         this.tags = this.article.tages;
         this.sortComments(this.article.comments);
         this.likesCount = this.article.likes.length;
-        console.log(this.article.comments);
       });
     });
   }
@@ -72,5 +70,15 @@ export class ArticleComponent implements OnInit {
 
   sortComments(comments: any[]): void {
     comments?.reverse();
+  }
+
+  loadData(): void {
+    this.articleService.getArticleById(this.id).subscribe((res: any) => {
+      this.article = res;
+      this.isLiked = this.articleService.AleradyLikeIt(this.article.likes);
+      this.tags = this.article.tages;
+      this.sortComments(this.article.comments);
+      this.likesCount = this.article.likes.length;
+    });
   }
 }
