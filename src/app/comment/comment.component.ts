@@ -45,7 +45,8 @@ export class CommentComponent implements OnInit {
     this.operationFlag = this.autherId == this.loggedUserId ? true : false;
   }
 
-  editComment(data: HTMLSpanElement) {
+  editComment(data: HTMLDivElement) {
+    this.enableEdit = false;
     const comment = { content: data.textContent };
     this.comment.editComment(this.commentId, comment).subscribe(() => {
       this.change.emit();

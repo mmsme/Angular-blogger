@@ -20,9 +20,8 @@
           <a class="dropdown-item" (click)="deleteComment()">Delete</a>
         </div>
       </div>
-      <span [attr.contenteditable]="enableEdit" #comment (keyup.enter)="editComment(comment)">
-        <ng-content select=".content"></ng-content>
-      </span>
+
+      <ng-content select=".content"></ng-content>
       <div class="align-self-end mt-2">
         <i class="far fa-clock" style="color: #28c886;"></i>
         <ng-content select=".date"></ng-content>
