@@ -21,14 +21,13 @@ export class UserService {
     return this.http.get(this.url + '/followers', this.setHeaders());
   }
 
-  // searchByname(username: any): any {
-  //   return this.http.get(this.url + '/name/' + username, this.setHeaders());
-  // }
-
-  followAuther(autherId: any): any{
-    return this.http.post(this.url + '/follow/' + autherId,'', this.setHeaders());
+  followAuther(autherId: any): any {
+    return this.http.post(
+      this.url + '/follow/' + autherId,
+      '',
+      this.setHeaders()
+    );
   }
-
 
   getUserByName(name: any): any {
     return this.http.get(this.url + '/name/' + name, this.setHeaders());

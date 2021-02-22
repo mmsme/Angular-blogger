@@ -13,6 +13,7 @@ export class UserCardComponent implements OnInit {
   @Input('name') name!: string;
   @Input('followers') followers: any[] = [];
   @Input('auther') autherID: any;
+  @Output('change') change = new EventEmitter();
 
   button!: string;
 
@@ -35,7 +36,9 @@ export class UserCardComponent implements OnInit {
   onFollowClicked(): void {
     this.flag = !this.flag; // change flag
     this.userServices.followAuther(this.autherID).subscribe(
-      () => {},
+      () => {
+        this.change.emit();
+      },
       () => {
         this.flag = !this.flag; // rollback
       }

@@ -2,9 +2,7 @@ import { Router } from '@angular/router';
 import { ArticleService } from './../services/article.service';
 import { UserService } from './../services/user.service';
 import { ImgDivService } from './../services/img-div.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,7 +13,8 @@ export class ProfileComponent implements OnInit {
   isComplete = false;
   User: any;
   UserArticles: any = [];
-  following = [];
+  following: any = [];
+  showFlag: number = 3;
 
   constructor(
     public img: ImgDivService,
@@ -27,18 +26,17 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userServices.getProfileInf().subscribe((user: any) => {
       this.User = user;
-      console.log(this.User);
 
       // get Following
-      this.userServices
-        .getFollowing()
-        .subscribe((arg: any) => (this.following = arg));
+      this.userServices.getFollowing().subscribe((arg: any) => {
+        this.following = arg;
+        console.log(this.following);
+      });
 
       this.article
         .getArticleByAuther(this.User.username)
         .subscribe((data: any) => {
           this.UserArticles = data.reverse();
-          console.table(this.UserArticles);
           this.isComplete = true;
         });
     });
@@ -56,5 +54,11 @@ export class ProfileComponent implements OnInit {
   ShowSelected(id: any): void {
     // tslint:disable-next-line:object-literal-key-quotes
     this.route.navigate(['/home', { outlets: { route1: ['article', id] } }]);
+  }
+
+  loadFollowingChange() {
+    this.userServices.getFollowing().subscribe((data: any) => {
+      this.following = data;
+    });
   }
 }

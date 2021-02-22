@@ -58,8 +58,8 @@
       </div>
       <div id="info" class="col-12 col-md-4 p-4">
         <div class="article-info"><i class="fas fa-clock"></i>&nbsp; {{article?.createdAt | date: 'longDate'}}</div>
-        <div class="article-info"><i class="fas fa-heart"></i>&nbsp; {{article?.likes?.length}} Like</div>
-        <div class="article-info"><i class="fas fa-clock"></i>&nbsp; {{article?.comments?.length}} Comment</div>
+        <div class="article-info"><i class="fas fa-heart"></i>&nbsp; {{likesCount}} Like</div>
+        <div class="article-info"><i class="fas fa-clock"></i>&nbsp; {{article?.comments.length}} Comment</div>
       </div>
     </div>
 

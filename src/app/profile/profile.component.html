@@ -1,7 +1,7 @@
 <div class="container mt-4">
 
   <div class="row">
-    <div id="profile" class="col-12 col-lg-4 text-center">
+    <div id="profile" class="col-12 col-lg-4 text-center mb-2">
 
       <div class="card shadow pt-4">
         <div class="d-flex justify-content-center">
@@ -17,50 +17,108 @@
         </div>
 
         <div class="row d-flex justify-content-between p-4">
-          <div class="tabs text-center">
+          <div class="tabs text-center" (click)="showFlag = 1">
             <p class="text m-0">{{User?.following.length}}</p>
-            <p class="solgan m-0">Followers</p>
+            <p class=" solgan m-0">Followers</p>
           </div>
-          <div class="tabs text-center">
+          <div class="tabs text-center" (click)="showFlag = 2">
             <p class="text m-0">{{following?.length}}</p>
             <p class="solgan m-0">Following</p>
           </div>
-          <div class="tabs text-center">
+          <div class="tabs text-center" (click)="showFlag = 3">
             <p class="text m-0">{{UserArticles.length}}</p>
             <p class="solgan m-0">Articles</p>
           </div>
         </div>
       </div>
     </div>
+    <!-- -------------------------------------------------------- -->
     <div class="col-12 col-lg-7">
-      <div class="text-center">
-        <h2 style="color: rgba(0, 0, 0, 0.507);">Your Articles</h2>
-      </div>
-      <div *ngIf="UserArticles?.length == 0">
-        <div class="jumbotron jumbotron-fluid mt-3 text-center"
-          style="border-radius: 1em; background-color: transparent;">
-          <div class="container">
-            <h1 style="opacity: 0.8;" class="display-4">No Articles to Show</h1>
+      <div *ngIf="showFlag == 3">
+        <div class="text-center">
+          <h2 style="color: rgba(0, 0, 0, 0.507);">Your Articles</h2>
+        </div>
+        <div *ngIf="UserArticles?.length == 0">
+          <div class="jumbotron jumbotron-fluid mt-3 text-center"
+            style="border-radius: 1em; background-color: transparent;">
+            <div class="container">
+              <h1 style="opacity: 0.8;" class="display-4">No Articles to Show</h1>
+            </div>
           </div>
         </div>
+        <div>
+          <ng-container *ngFor="let item of UserArticles">
+            <app-porfile-post (dblclick)="ShowSelected(item._id)" (delete)="deleteArticle(item._id)"
+              (edit)="editArticle(item._id)" [img]="item.image" [name]="item.auther?.fname"
+              class="col-12 col-md-4 col-lg-4">
+              <ng-container class="name">
+                {{(item?.auther?.fname).charAt(0).toUpperCase() + (item?.auther?.fname+' '+item?.auther?.lname).slice(1)}}
+              </ng-container>
+              <ng-container class="username">{{ '@'+item.auther?.username }}</ng-container>
+              <ng-container class="title">{{item.title}}</ng-container>
+              <ng-container class="content">{{item.content | slice:0:30}}...</ng-container>
+              <ng-container class="date">{{item.createdAt | date:'mediumDate'}}</ng-container>
+              <ng-container class="likes">{{item.likes.length}}</ng-container>
+            </app-porfile-post>
+          </ng-container>
+        </div>
       </div>
-      <div>
-        <ng-container *ngFor="let item of UserArticles">
-          <app-porfile-post (dblclick)="ShowSelected(item._id)" (delete)="deleteArticle(item._id)"
-            (edit)="editArticle(item._id)" [img]="item.image" [name]="item.auther?.fname"
-            class="col-12 col-md-4 col-lg-4">
-            <ng-container class="name">
-              {{(item?.auther?.fname).charAt(0).toUpperCase() + (item?.auther?.fname+' '+item?.auther?.lname).slice(1)}}
-            </ng-container>
-            <ng-container class="username">{{ '@'+item.auther?.username }}</ng-container>
-            <ng-container class="title">{{item.title}}</ng-container>
-            <ng-container class="content">{{item.content | slice:0:30}}...</ng-container>
-            <ng-container class="date">{{item.createdAt | date:'mediumDate'}}</ng-container>
-            <ng-container class="likes">{{item.likes.length}}</ng-container>
-          </app-porfile-post>
-        </ng-container>
 
+
+      <div *ngIf="showFlag == 2">
+        <div class="text-center m-2">
+          <h2 style="color: rgba(0, 0, 0, 0.507);">Following</h2>
+        </div>
+        <div *ngIf="following?.length == 0">
+          <div class="jumbotron jumbotron-fluid mt-3 text-center"
+            style="border-radius: 1em; background-color: transparent;">
+            <div class="container">
+              <h1 style="opacity: 0.8;" class="display-4">No Following</h1>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap">
+          <ng-container *ngFor="let item of following">
+            <app-user-card (change)="loadFollowingChange()" class="col-12 col-md-6" [name]="item.fname"
+              [auther]="item._id" [followers]="item?.following">
+              <ng-container class="name">
+                {{img.nameToCaptial(item?.fname+' '+item?.lname)}}
+              </ng-container>
+              <ng-container class="username">
+                {{'@'+item?.username}}
+              </ng-container>
+            </app-user-card>
+          </ng-container>
+        </div>
+      </div>
+
+      <div *ngIf="showFlag == 1">
+        <div class="text-center m-2">
+          <h2 style="color: rgba(0, 0, 0, 0.507);">Your Followers</h2>
+        </div>
+        <div *ngIf="User?.following.length == 0">
+          <div class="jumbotron jumbotron-fluid mt-3 text-center"
+            style="border-radius: 1em; background-color: transparent;">
+            <div class="container">
+              <h1 style="opacity: 0.8;" class="display-4">No Followers</h1>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap">
+          <ng-container *ngFor="let item of User?.following">
+            <app-user-card (change)="loadFollowingChange()" class="col-12 col-md-6" [name]="item.fname"
+              [auther]="item._id" [followers]="item?.following">
+              <ng-container class="name">
+                {{img.nameToCaptial(item?.fname+' '+item?.lname)}}
+              </ng-container>
+              <ng-container class="username">
+                {{'@'+item?.username}}
+              </ng-container>
+            </app-user-card>
+          </ng-container>
+        </div>
       </div>
     </div>
+
   </div>
 </div>

@@ -15,12 +15,13 @@ export class ArticleComponent implements OnInit {
   article: any;
   tags = [];
   isLiked!: boolean;
+  likesCount!: number;
 
   constructor(
     public img: ImgDivService,
     public auth: AuthService,
     private commentServices: CommentService,
-    private as: ArticleService,
+    private articleService: ArticleService,
     private ar: ActivatedRoute
   ) {}
 
@@ -29,12 +30,14 @@ export class ArticleComponent implements OnInit {
     this.ar.params.subscribe((url) => {
       let id;
       id = url.id;
-      this.as.getArticleById(id).subscribe((res: any) => {
+      this.articleService.getArticleById(id).subscribe((res: any) => {
         this.article = res;
         console.log(this.article);
-        this.isLiked = this.as.AleradyLikeIt(this.article.likes);
+        this.isLiked = this.articleService.AleradyLikeIt(this.article.likes);
         this.tags = this.article.tages;
         this.sortComments(this.article.comments);
+        this.likesCount = this.article.likes.length;
+        console.log(this.article.comments);
       });
     });
   }
@@ -47,6 +50,7 @@ export class ArticleComponent implements OnInit {
 
   addComment(data: HTMLTextAreaElement): void {
     const content = { content: data.value };
+
     this.commentServices
       .addComment(this.article._id, content)
       .subscribe((res: any) => {
@@ -56,14 +60,17 @@ export class ArticleComponent implements OnInit {
   }
 
   like(): void {
-    this.as.likeArticle(this.article._id);
     this.isLiked = !this.isLiked;
+    this.likesCount += this.isLiked ? 1 : -1;
+    this.articleService.likeArticle(this.article._id).subscribe(
+      () => {},
+      () => {
+        this.likesCount--;
+      }
+    );
   }
 
   sortComments(comments: any[]): void {
-    comments?.sort(
-      (a: any, b: any): any =>
-        new Date(a.createdAt).getTime() - new Date().getTime()
-    );
+    comments?.reverse();
   }
 }
