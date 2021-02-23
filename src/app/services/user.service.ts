@@ -33,6 +33,14 @@ export class UserService {
     return this.http.get(this.url + '/name/' + name, this.setHeaders());
   }
 
+  getUserById(id: any) {
+    return this.http.get(this.url + '/' + id, this.setHeaders());
+  }
+
+  updateUser(data: any) {
+    return this.http.patch(this.url + '/update', data, this.setHeaders());
+  }
+
   private setHeaders(): any {
     const token = localStorage.getItem('user') || '';
     let headers: HttpHeaders = new HttpHeaders();

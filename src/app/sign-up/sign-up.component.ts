@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(30),
       Validators.required,
-      Validators.pattern('[A-Z][a-zA-Z]*'),
+      Validators.pattern('[a-zA-Z]*'),
       CustomeValidators.checkSpaceInput,
     ]),
     lname: new FormControl('', [

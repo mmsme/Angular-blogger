@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { UserService } from './../services/user.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';

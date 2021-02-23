@@ -5,35 +5,91 @@
       <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
       <div class="col-lg-7">
         <div class="p-5">
+          <button type="button" class="close" (click)="navigateToProfile()">
+            <span aria-hidden="true">&times;</span>
+          </button>
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Update Account Info!</h1>
+            <h1 class="h3 text-gray-900 mb-4">Update Account Info!</h1>
           </div>
-          <form class="user">
+          <form class="user" [formGroup]="form">
+
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                  placeholder="First Name">
+                <input #fname formControlName="fname" type="text" class="form-control form-control-user"
+                  placeholder="First Name" [class.is-invalid]="Fname.touched && Fname.invalid"
+                  [class.is-valid]="Fname.touched && !Fname.invalid" value="{{User?.fname}}">
+
+                <div *ngIf="Fname.touched && Fname.invalid" class="invalid-feedback ml-3">
+                  <p *ngIf="Fname.errors.minlength">Firstname minlength is
+                    {{Fname.errors.minlength.requiredLength}}</p>
+                  <p *ngIf="Fname.errors.maxlength">Firstname maxLength is
+                    {{Fname.errors.maxlength.requiredLength}}</p>
+                  <p *ngIf="Fname.errors.pattern">Firstname invalid</p>
+                  <p *ngIf="Fname.errors.checkSpaceInput">Firstname invalid</p>
+                </div>
               </div>
+
               <div class="col-sm-6">
-                <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                <input #lname formControlName="lname" type="text" class="form-control form-control-user"
+                  placeholder="Last Name" [class.is-invalid]="Lname.touched && Lname.invalid"
+                  [class.is-valid]="Lname.touched && !Lname.invalid" value="{{User?.lname}}">
+
+                <div *ngIf="Lname.touched && Lname.invalid" class="invalid-feedback ml-3">
+                  <p *ngIf="Lname.errors.minlength">Lastname minlength is
+                    {{Lname.errors.minlength.requiredLength}}</p>
+                  <p *ngIf="Lname.errors.maxlength">Lastname maxLength is
+                    {{Lname.errors.maxlength.requiredLength}}</p>
+                  <p *ngIf="Lname.errors.pattern">Lastname invalid</p>
+                  <p *ngIf="Lname.errors.checkSpaceInput">Lastname invalid</p>
+                </div>
               </div>
             </div>
+
+
             <div class="form-group">
-              <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                placeholder="Email Address">
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                  placeholder="Password">
+              <input #username formControlName="username" type="text" class="form-control form-control-user"
+                placeholder="Username" [class.is-invalid]="Username.touched && Username.invalid"
+                [class.is-valid]="Username.touched && !Username.invalid" value="{{User?.username}}">
+
+              <div *ngIf="Username.touched && Username.invalid" class="invalid-feedback ml-3">
+                <p *ngIf="Username.errors.minlength">Username minlength is
+                  {{Username.errors.minlength.requiredLength}}</p>
+                <p *ngIf="Username.errors.maxlength">Username maxLength is
+                  {{Username.errors.maxlength.requiredLength}}</p>
+                <p *ngIf="Username.errors.checkSpaceInput">Username invalid</p>
               </div>
-              <div class="col-sm-6">
-                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
-                  placeholder="Repeat Password">
+            </div>
+
+
+            <div class="form-group">
+              <input #email formControlName="email" type="email" class="form-control form-control-user"
+                placeholder="Email Address" [class.is-invalid]="Email.touched && Email.invalid"
+                [class.is-valid]="Email.touched && !Email.invalid" value="{{User?.email}}">
+
+              <div *ngIf="Email.touched && Email.invalid" class="invalid-feedback ml-3">
+                <p>Email is not Valid</p>
               </div>
             </div>
-            <button class="btn btn-success btn-user btn-block">
-              Register Account
+
+
+            <div class="form-group">
+              <input #password formControlName="password" type="password" class="form-control form-control-user"
+                placeholder="Password" [class.is-invalid]="Password.touched && Password.invalid"
+                [class.is-valid]="Password.touched && !Password.invalid ">
+
+              <div *ngIf="Password.touched && Password.invalid" class="invalid-feedback ml-3">
+                <p *ngIf="Password.errors.minlength">Password minlength is
+                  {{Password.errors.minlength.requiredLength}}</p>
+                <p *ngIf="Password.errors.maxlength">Password maxLength is
+                  {{Password.errors.maxlength.requiredLength}}</p>
+                <p *ngIf="Password.errors.checkSpaceInput">Password invalid</p>
+              </div>
+            </div>
+
+
+            <button class="btn btn-success btn-user btn-block"
+              (click)="updateUser(fname,lname,username,email,password)">
+              Update
             </button>
           </form>
         </div>
