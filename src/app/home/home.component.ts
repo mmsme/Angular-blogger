@@ -1,8 +1,4 @@
-import { ArticleService } from './../services/article.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',

@@ -59,11 +59,16 @@ export class ArticleComponent implements OnInit {
   }
 
   like(): void {
+    // press like button
+    // 1 change style to show effect
     this.isLiked = !this.isLiked;
+    // 2 change value
     this.likesCount += this.isLiked ? 1 : -1;
+    // 3 like Backend
     this.articleService.likeArticle(this.article._id).subscribe(
       () => {},
       () => {
+        // roleback
         this.likesCount--;
       }
     );

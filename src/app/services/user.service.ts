@@ -42,9 +42,9 @@ export class UserService {
   }
 
   private setHeaders(): any {
-    const token = localStorage.getItem('user') || '';
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', JSON.parse(token));
+    const token = localStorage.getItem('user') || ''; // get toke from local storage
+    let headers: HttpHeaders = new HttpHeaders(); // create header for request
+    headers = headers.append('Authorization', JSON.parse(token)); // add token to headers
     return { headers };
   }
 }
