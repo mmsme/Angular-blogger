@@ -34,7 +34,7 @@ export class UserService {
   }
 
   getUserById(id: any) {
-    return this.http.get(this.url + '/' + id, this.setHeaders());
+    return this.http.get(this.url + '/userID/' + id, this.setHeaders());
   }
 
   updateUser(data: any) {

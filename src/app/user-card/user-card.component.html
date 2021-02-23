@@ -6,10 +6,10 @@
     </div>
   </div>
   <div class="card-body">
-    <h4 class="h5" (click)="navigateToProfile()">
+    <h4 class="h5" (click)="navigateToProfile()" style="cursor: pointer;">
       <ng-content select=".name"></ng-content>
     </h4>
-    <p class="h6" (click)="navigateToProfile()">
+    <p class="h6" (click)="navigateToProfile()" style="cursor: pointer;">
       <ng-content select=".username"></ng-content>
     </p>
     <button type="button" class="shadow-sm pr-5 pl-5 shadow-sm mt-5 mb-2" (click)="onFollowClicked()"

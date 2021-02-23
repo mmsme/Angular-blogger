@@ -20,6 +20,7 @@ export class CommentComponent implements OnInit {
 
   loggedUserId!: any;
   operationFlag = false;
+  editableFlag = false;
 
   showDiv = false;
 
@@ -45,8 +46,8 @@ export class CommentComponent implements OnInit {
     this.operationFlag = this.autherId == this.loggedUserId ? true : false;
   }
 
-  editComment(data: HTMLTextAreaElement) {
-    const comment = { content: data.value };
+  editComment(data: any) {
+    const comment = { content: data };
     this.comment.editComment(this.commentId, comment).subscribe(() => {
       this.change.emit();
     });

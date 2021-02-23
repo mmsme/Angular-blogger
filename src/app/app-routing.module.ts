@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { PostTagsComponent } from './post-tags/post-tags.component';
 import { WritersComponent } from './writers/writers.component';
 import { SearchComponent } from './search/search.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
         path: 'article/:id',
         component: ArticleComponent,
         outlet: 'route1',
+        canActivate: [AuthGuard],
       },
       {
         path: 'profile',
@@ -66,6 +68,12 @@ const routes: Routes = [
       {
         path: 'editProfile/:id',
         component: EditProfileComponent,
+        outlet: 'route1',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'details/:id',
+        component: UserDetailsComponent,
         outlet: 'route1',
         canActivate: [AuthGuard],
       },

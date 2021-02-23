@@ -22,7 +22,8 @@ export class UserCardComponent implements OnInit {
   constructor(
     public img: ImgDivService,
     private userServices: UserService,
-    public auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,5 +47,10 @@ export class UserCardComponent implements OnInit {
     );
   }
 
-  navigateToProfile() {}
+  navigateToProfile() {
+    this.router.navigate([
+      '/home',
+      { outlets: { route1: ['details', this.autherID] } },
+    ]);
+  }
 }

@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  number = new Array(3);
   isComplete = false;
   User: any;
   UserArticles: any = [];
