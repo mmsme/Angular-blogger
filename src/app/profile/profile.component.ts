@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   UserArticles: any = [];
   following: any = [];
   showFlag: number = 3;
+  isLoading = true;
 
   constructor(
     public img: ImgDivService,
@@ -38,6 +39,8 @@ export class ProfileComponent implements OnInit {
           this.UserArticles = data.reverse();
           this.isComplete = true;
         });
+
+      this.isLoading = false;
     });
   }
 

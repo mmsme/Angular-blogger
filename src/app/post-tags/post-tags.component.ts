@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostTagsComponent implements OnInit {
   articles!: any[];
   tag!: string;
+  isLoading = true;
 
   constructor(
     private ar: ActivatedRoute,
@@ -22,6 +23,7 @@ export class PostTagsComponent implements OnInit {
       this.tag = url.tag;
       this.articlServices.getArticleByTag(this.tag).subscribe((res: any) => {
         this.articles = res;
+        this.isLoading = false;
       });
     });
   }

@@ -29,6 +29,7 @@ import { WritersComponent } from './writers/writers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { PostTagsComponent } from './post-tags/post-tags.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [				
@@ -62,6 +63,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
     NgxPaginationModule,
+    NoopAnimationsModule,
   ],
   providers: [HttpClientModule, FormBuilder, AuthGuard],
   bootstrap: [AppComponent],

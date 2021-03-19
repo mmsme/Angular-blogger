@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   users: any = [];
   articles: any = [];
   currentUserID!: string;
+  isLoading = false;
   searchBar = new FormControl('', [
     Validators.required,
     CustomeValidators.checkSpaceInput,
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   search(key: HTMLInputElement): void {
+    this.isLoading = true;
     this.userServices.getUserByName(key.value).subscribe((res: any) => {
       this.users = res;
       this.removeLoggedUserFromResult();
@@ -44,6 +46,7 @@ export class SearchComponent implements OnInit {
 
     this.articleServces.getArticleByTitle(key.value).subscribe((res: any) => {
       this.articles = res;
+      this.isLoading = false;
     });
   }
 

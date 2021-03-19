@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class WritersComponent implements OnInit {
   usersArr: any = [];
   currentUserId!: any;
+  isLoading = true;
 
   constructor(
     public userServices: UserService,
@@ -26,6 +27,7 @@ export class WritersComponent implements OnInit {
       );
 
       this.usersArr.splice(index, 1);
+      this.isLoading = false;
     });
   }
 }

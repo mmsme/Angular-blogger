@@ -18,6 +18,7 @@ export class ArticleComponent implements OnInit {
   isLiked!: boolean;
   likesCount!: number;
   id!: any;
+  isLoading = true;
 
   constructor(
     public img: ImgDivService,
@@ -37,6 +38,7 @@ export class ArticleComponent implements OnInit {
         this.tags = this.article.tages;
         this.sortComments(this.article.comments);
         this.likesCount = this.article.likes.length;
+        this.isLoading = false;
       });
     });
   }

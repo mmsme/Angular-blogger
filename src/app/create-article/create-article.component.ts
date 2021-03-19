@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-article.component.css'],
 })
 export class CreateArticleComponent implements OnInit {
+  isLoading = false;
   selectedFile!: File;
   fd = new FormData();
 
@@ -57,6 +58,7 @@ export class CreateArticleComponent implements OnInit {
     content: HTMLTextAreaElement,
     tags: HTMLInputElement
   ): void {
+    this.isLoading = true;
     this.fd.append('title', title.value);
     this.fd.append('content', content.value);
     const tagesArr = this.genrateTags(tags);
@@ -64,6 +66,8 @@ export class CreateArticleComponent implements OnInit {
       this.fd.append('tages', item);
     }
 
-    this.as.createNewArticle(this.fd);
+    this.as.createNewArticle(this.fd).this.subscribe(() => {
+      this.isLoading = false;
+    });
   }
 }
